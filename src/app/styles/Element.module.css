@@ -1,0 +1,21 @@
+.selected_element{
+    width: 1500px;
+    height: 200px;
+    background: #ff9500;
+    border-radius: 15px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   color: white;
+   position: absolute;
+   top: 10;
+   right: 10;
+}
+.link{
+      background: linear-gradient(120deg, #ff9500, white,black);
+    background-clip: text;
+  -webkit-background-clip: text;
+
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}

@@ -1,0 +1,17 @@
+.el_list{
+width: 300px;
+height: 883px;   
+background: #ff9500;
+border-radius: 15px;
+display: flex;
+justify-content: center;
+flex-direction: column;
+color: white;
+position: absolute;
+left: 20;
+bottom: 10;
+li{
+    font-family: monospace;
+    font-size: 1rem;
+}
+}
