@@ -1,17 +1,19 @@
-import styles from '../../styles/Element_list.module.css';
+import { useState } from "react";
+import styles from "../../styles/Menu.module.css";
 
-export default function Element_list(){
+ export default function Element_list(){
     return(
-        <div>
-        <div className={styles.el_list}>
-         <ul>
-            <li>Element 1</li>
-            <li>Element 2</li>
-            <li>Element 3</li>
-            <li>Element 4</li>
-            <li>Element 5</li>
-         </ul>
-        </div>
-        </div>
-    )
-}
+    <div className={styles.menu}>
+<ul>
+    <li>кнопка</li>
+    <li>модальное окно</li>
+    <li>навигационная панель</li>
+    <li>панель входа</li>
+    <li>карты</li>
+</ul>
+    </div>
+  ); 
+ }
+
+
+

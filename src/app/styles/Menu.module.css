@@ -1,49 +1,17 @@
 .menu {
-  width: 500px;
-  height: 400px;
-  padding: 30px;
-  border-radius: 15px;
-  background: #ff9700;
-  font-family: Arial, sans-serif;
-  position: relative;
-}
-
-.menu h2 {
-  margin-top: 0;
-  color: white;
-}
-
-.menu button {
-  width: 100%;
-  margin: 6px 0;
-  padding: 14px;
-  border: none;
-  border-radius: 8px;
-  background: black;
-  color: white;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-.menu button:hover {
-  background: white;
-  color: black;
-}
-
-.menu p {
-  margin-top: 30px;
-  color: black;
+width: 300px;
+height: 883px;   
+background: #ff9500;
+border-radius: 15px;
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+color: white;
+position: absolute;
+left: 20;
+bottom: 10;
+li{
   font-weight: bold;
 }
-
-.menu span {
-  color: white;
-  font-weight: bold;
-}
-.menu a {
-    color: white;
-    font-weight: bold;
-    position: absolute;
-    bottom: 35;
-    left: 150;
 }
