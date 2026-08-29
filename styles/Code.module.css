@@ -1,0 +1,17 @@
+.code_sec{
+    width: 650px;
+    height: 600px;
+    background: #ff9500; 
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: absolute;
+    bottom: 10;
+    left: 400;
+}
+.code_block{
+    font-family: sans-serif, arial;
+    font-size: 12px;
+}

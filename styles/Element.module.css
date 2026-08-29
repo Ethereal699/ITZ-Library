@@ -1,0 +1,13 @@
+.selected_element{
+    width: 1500px;
+    height: 200px;
+    background: #ff9500;
+    border-radius: 15px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   color: white;
+   position: absolute;
+   top: 10;
+   right: 10;
+}

@@ -1,0 +1,30 @@
+.el_list{
+width: 300px;
+height: 530px;   
+background: #ff9500;
+border-radius: 15px;
+display: flex;
+justify-content: center;
+flex-direction: column;
+color: rgb(0, 0, 0);
+position: absolute;
+left: 20;
+bottom: 370;
+li{
+    transition: all .2s ease;
+    font-family: monospace;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+li:hover{
+ 
+ transform: scale(1.1);  
+ color: white;
+}
+}
+
+@keyframes clicked{
+100%{
+color: white;
+}
+}
