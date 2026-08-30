@@ -11,11 +11,3 @@
    top: 10;
    right: 10;
 }
-.link{
-      background: linear-gradient(120deg, #ff9500, white,black);
-    background-clip: text;
-  -webkit-background-clip: text;
-
-  color: transparent;
-  -webkit-text-fill-color: transparent;
-}

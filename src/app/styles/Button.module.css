@@ -1,15 +1,13 @@
 .btn{
 margin-top:28px;
 background:  var(--orange);
-color:var(--white);
+color: black;
 padding:16px 28px;
 border-radius:12px;
 border:none;
 font-weight:700;
 font-size:18px;
-
 cursor:pointer;
-
  :hover{
     box-shadow:0 6px 18px  var(--orange);
  }

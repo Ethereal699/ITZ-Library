@@ -11,3 +11,7 @@
     bottom: 10;
     left: 400;
 }
+.code_block{
+    font-family: sans-serif, arial;
+    font-size: 12px;
+}

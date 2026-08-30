@@ -2,25 +2,31 @@
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:20px 24px;
+
 max-width: 100%;
 margin:0 auto;
 }
 
-.left{display:flex;align-items:center}
+.left{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-left: 20px;
+}
 
-.right{display:flex;gap:12px;align-items:center}
+.right{
+    display:flex;
+    gap:12px;
+   
+   
+}
 
 .icon{
 background:transparent;
 color:var(--white);
-border:1px solid rgba(255, 255, 255, 0.507);
-padding:10px;
+width: 50px;
+height: 50px;
 border-radius:8px;
 cursor:pointer;
 }
 
-#logo{
-    font-size: 100px;
-    
-}
