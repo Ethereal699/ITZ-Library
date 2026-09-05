@@ -25,9 +25,9 @@ export default function Element_list({ onSelectElement }) {
   ];
 
   return (
-    <div>
       <div className={styles.el_list}>
-        <ul>
+        <div className={styles.el_list2}>
+           <ul>
           {elements.map((label) => {
             const item = dataBase.find((btn) => btn.label === label) || {
               id: label.toLowerCase().replace(/\s+/g, '-'),
@@ -46,7 +46,8 @@ export default function Element_list({ onSelectElement }) {
             );
           })}
         </ul>
+        </div>
       </div>
-    </div>
+
   );
 }

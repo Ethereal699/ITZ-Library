@@ -1,15 +1,15 @@
 .el_list{
 width: 300px;
 height: 730px;   
-background: #ff9500;
+background: #c27406;
 border-radius: 15px;
 display: flex;
 justify-content: center;
+align-items: center;
 flex-direction: column;
 color: rgb(0, 0, 0);
 position: absolute;
 left: 20;
-
 bottom: 170;
 li{
     transition: all .2s ease;
@@ -18,11 +18,20 @@ li{
     cursor: pointer;
 }
 li:hover{
-  
+    transform: scale(1.1);
  color: white;
 }
 }
-
+.el_list2{
+width: 290px;
+height: 720px;
+display: flex;
+justify-content: center;
+flex-direction: column;
+border:2px solid black;   
+border-radius: 15px;
+background: #ff9500;
+}
 @keyframes clicked{
 100%{
 color: white;

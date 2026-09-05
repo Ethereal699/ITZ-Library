@@ -1,10 +1,10 @@
 .selected_element{
-    width: 1500px;
+    width: 700px;
     height: 200px;
-    background: #ff9500;
+    background: #c27406;
     border-radius: 15px;
-    font-size: 3rem;
    display: flex;
+   font-size: 16px;
    font-family: monospace;
    align-items: center;
    justify-content: center;
@@ -12,4 +12,17 @@
    top: 10;
    right: 10;
     color: black;
+    padding: 5px;
+}
+.selected_element2{
+width: 690px;
+height: 190px;
+background: #ff9500;
+border-radius: 5px;
+display: flex;
+font-family: monospace;
+border: 2px solid black;
+display: flex;
+align-items: center;
+justify-content: center;
 }

@@ -4,8 +4,8 @@ import styles from '../../styles/Code.module.css';
 export default function Code_section({ selectedElement }) {
   if (!selectedElement) {
     return (
-      <div>
-        <div className={styles.code_sec}>
+      <div className={styles.code_sec}>
+        <div className={styles.code_sec_prev2}>
           <h3>To get started select element</h3>
         </div>
       </div>
@@ -13,8 +13,8 @@ export default function Code_section({ selectedElement }) {
   }
 
   return (
-    <div>
-      <div className={styles.code_sec}>
+    <div className={styles.code_sec}>
+      <div className={styles.code_sec2}>
         {selectedElement.code ? (
           <pre className={styles.code_block}>
             <code>{selectedElement.code}</code>
