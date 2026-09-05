@@ -1,6 +1,6 @@
 .el_list{
 width: 300px;
-height: 530px;   
+height: 730px;   
 background: #ff9500;
 border-radius: 15px;
 display: flex;
@@ -9,7 +9,8 @@ flex-direction: column;
 color: rgb(0, 0, 0);
 position: absolute;
 left: 20;
-bottom: 370;
+
+bottom: 170;
 li{
     transition: all .2s ease;
     font-family: monospace;
@@ -17,8 +18,7 @@ li{
     cursor: pointer;
 }
 li:hover{
- 
- transform: scale(1.1);  
+  
  color: white;
 }
 }

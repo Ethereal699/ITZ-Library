@@ -1,6 +1,7 @@
 .mod_page{
     width: 99vw;
     min-height: 100vh;
+    background: rgb(3, 3, 24);
     display: flex;
     align-items: center;
     justify-content: center;

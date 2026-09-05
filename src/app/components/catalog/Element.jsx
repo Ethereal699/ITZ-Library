@@ -7,7 +7,7 @@ export default function Element({ selectedElement }) {
       <div className={styles.selected_element}>
         <h3>
           {selectedElement
-            ? `Выбранный элемент: ${selectedElement.label}`
+            ? `${selectedElement.label}`
             : 'To get started select element'}
         </h3>
       </div>

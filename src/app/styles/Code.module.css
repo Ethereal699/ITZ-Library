@@ -1,6 +1,6 @@
 .code_sec{
-    width: 650px;
-    height: 600px;
+    width: 700px;
+    height: 625px;
     background: #ff9500; 
     border-radius: 15px;
     display: flex;
@@ -10,8 +10,16 @@
     position: absolute;
     bottom: 10;
     left: 400;
+    color: black;
+    font-size: 16px;
+    overflow-y: auto;
+    overflow-x:auto;
+    padding: 15px; 
+  
 }
-.code_block{
-    font-family: sans-serif, arial;
-    font-size: 12px;
+.code_sec::-webkit-scrollbar{
+width: 8px;
+height: 100%;
+border-radius: 15px;
+background: #945600; 
 }

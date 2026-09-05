@@ -1,6 +1,6 @@
 .code_exp{
-    width: 750px;
-    height: 600px;
+    width: 700px;
+    height: 625px;
     background: #ff9500;
     border-radius: 15px;
     display: flex;
@@ -10,8 +10,15 @@
     position: absolute;
     right: 10;
     bottom: 10;
+    color: black;
+    overflow-y:auto;
+    overflow-x:auto;
+    padding: 15px;
+    font-size: 14px;
 }
-.code_block{
-font-size: 13px;
-font-family: sans-serif , arial;
+.code_exp::-webkit-scrollbar{
+width: 8px;
+height: 100%;
+border-radius: 15px;
+background: #945600; 
 }

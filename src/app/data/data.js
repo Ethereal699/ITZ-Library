@@ -87,7 +87,7 @@ import SpecularButton from './SpecularButton';
     label: 'Curved Input',
     desc:`Что это:
 Поле ввода (input) с изогнутой/закруглённой формой и визуальными эффектами 
-(свечение, градиенты, возможно с искажением/кривизной). 
+(свечение, градиенты, возможно с искажением/кривизной).
 Обычно используется как стильный элемент формы.
 
 Как работает (общая идея для таких компонентов):
@@ -144,26 +144,34 @@ transition для плавных hover/focus‑эффектов.`,
       autoAnimate: false,
     },
     code: `
-<SpecularButton
-  size="md"
-  radius={12}
-  tint="#e0e0ff"
-  tintOpacity={0.1}
-  blur={4}
-  textColor="#ffffff"
-  lineColor="#a0a0ff"
-  baseColor="#3a3a5a"
-  intensity={1.2}
-  shineSize={12}
-  shineFade={50}
-  thickness={1.2}
-  speed={0.3}
-  followMouse={true}
-  proximity={200}
-  autoAnimate={false}
->
-  Curved Input
-</SpecularButton>
+import CurvedInput from './CurvedInput'
+
+<CurvedInput
+  placeholder="david@reactbits.dev"
+  buttonText="Get Started"
+  theme="dark"
+  bend={28}
+  height={64}
+  width={450}
+  onSubmit={value => console.log(value)}
+/>
+
+// Light preset, flat, no button
+<CurvedInput
+  showButton
+  showIcon
+  placeholder="Search components..."
+  type="text"
+  cornerRadius={18}
+  borderWidth={1.5}
+  fontSize={16}
+  backgroundColor="#1B1722"
+  textColor="#f5f5f5"
+  borderColor="#392e4e"
+  buttonColor="#A855F7"
+  buttonTextColor="#ffffff"
+  shadowSize="md"
+/>
     `.trim(),
   },
   {
@@ -317,7 +325,8 @@ const items = ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5',
     id: 'reflective-card',
     label: 'Reflective Card',
     desc:`Что это:
-Карточка с эффектом отражения/блика, который следует за курсором (как свет на глянцевой поверхности).
+Карточка с эффектом отражения/блика, который следует за курсором 
+(как свет на глянцевой поверхности).
 
 Как работает:
 
@@ -335,7 +344,8 @@ const items = ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5',
 
 Псевдоэлемент или отдельный div с градиентом (background: radial-gradient(...)).
 
-Обработчик onMouseMove, который обновляет CSS‑переменные (например, --x, --y) или style градиента.`,
+Обработчик onMouseMove, 
+который обновляет CSS‑переменные (например, --x, --y) или style градиента.`,
     code: `import ReflectiveCard from './ReflectiveCard';
 
 <div style={{ height: '600px', position: 'relative' }}>
@@ -358,7 +368,9 @@ const items = ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5',
     id: 'folder',
     label: 'Folder',
     desc:`Что это:
-Компонент‑«папка»: обычно карточка, которая при наведении/клике «открывается», показывая содержимое.
+Компонент‑«папка»: обычно карточка,
+
+которая при наведении/клике «открывается», показывая содержимое.
 
 Как работает:
 
@@ -392,7 +404,9 @@ const items = ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5',
     id: 'profile-card',
     label: 'Profile Card',
     desc:`Что это:
-Карточка профиля пользователя: аватар, имя, должность, ссылки, иногда с анимацией при наведении.
+Карточка профиля пользователя:
+
+аватар, имя, должность, ссылки, иногда с анимацией при наведении.
 
 Как работает:
 
@@ -450,7 +464,11 @@ CSS‑анимации для hover/появления.`,
 
 Для каждой иконки вычисляет расстояние до курсора.
 
-Применяет scale (увеличение) и, возможно, translateY (лёгкий подъём) в зависимости от расстояния.
+Применяет scale (увеличение) и,
+
+возможно,
+
+translateY (лёгкий подъём) в зависимости от расстояния.
 
 Что внутри:
 
@@ -466,10 +484,12 @@ CSS transform: scale(...) translate(...).`,
     code: `import Dock from './Dock';
 
   const items = [
-    { icon: <VscHome size={18} />, label: 'Home', onClick: () => alert('Home!') },
-    { icon: <VscArchive size={18} />, label: 'Archive', onClick: () => alert('Archive!') },
-    { icon: <VscAccount size={18} />, label: 'Profile', onClick: () => alert('Profile!') },
-    { icon: <VscSettingsGear size={18} />, label: 'Settings', onClick: () => alert('Settings!') },
+    { icon:
+    <VscHome size={18} />, label: 'Home', onClick: () => alert('Home!') },
+    { icon:
+    <VscArchive size={18} />, label: 'Archive', onClick: () => alert('Archive!') },
+    { icon:
+    <VscAccount size={18} />, label: 'Profile', onClick: () => alert('Profile!') },
   ];
 
   <Dock 
@@ -532,7 +552,9 @@ const items = [
     id: 'pixel-card',
     label: 'Pixel Card',
     desc:`Что это:
-Карточка с пиксельным/мозаичным эффектом: часто при наведении или появлении «собирается» из квадратиков.
+Карточка с пиксельным/мозаичным эффектом:
+
+часто при наведении или появлении «собирается» из квадратиков.
 
 Как работает (варианты):
 
@@ -631,33 +653,38 @@ CSS‑анимация @keyframes для движения градиента.
 Hover‑стили для усиления эффекта.`,
     code: `import SpotlightCard from './SpotlightCard';
   
-<SpotlightCard className="custom-spotlight-card" spotlightColor="rgba(0, 229, 255, 0.2)">
+<SpotlightCard className="custom-spotlight-card"
+
+spotlightColor="rgba(0, 229, 255, 0.2)">
   // Content goes here
 </SpotlightCard>`.trim(),
   },
   {
     id: 'border-glow',
     label: 'Border Glow',
-    desc:`Что это:
-Карточка/кнопка с светящейся рамкой, которая может двигаться или пульсировать.
+    desc:`
+Border Glow — это анимированный React-компонент из коллекции React Bits,
 
-Как работает:
+который добавляет вокруг любого контента мягкое светящееся свечение по границе.
 
-Использует градиентную рамку (через border-image или псевдоэлементы).
+Что делает Border Glow
 
-Анимация градиента (background-position) создаёт эффект «бегущего» свечения.
+Создаёт декоративную «рамку» с градиентным или цветным свечением вокруг карточки, кнопки,
 
-Может реагировать на hover: усиление яркости, изменение цвета.
+формы или другого блока.
 
-Что внутри:
+Свечение может быть статичным или анимированным 
 
-Контейнер с position: relative.
+(плавно перемещаться, пульсировать, реагировать на курсор).
 
-Псевдоэлемент ::before/::after с градиентом.
+Визуально выделяет элемент на тёмном фоне, придавая интерфейсу современный, «неоновый» вид.
 
-CSS‑анимация @keyframes для движения градиента.
+Как обычно используется
+Вокруг карточек в лендингах и портфолио.
 
-Hover‑стили для усиления эффекта.`,
+На CTA-кнопках и важных блоках (pricing, features).
+
+В тёмных темах, где нужен акцент за счёт света и цвета.`,
     code: `import BorderGlow from './BorderGlow';
 
 <BorderGlow
@@ -727,26 +754,35 @@ const items = [
   {
     id: 'elastic-slider',
     label: 'Elastic Slider',
-    desc:`Что это:
-Анимированный счётчик: число плавно увеличивается/уменьшается до целевого значения.
+    desc:`
+Elastic Slider — это анимированный React-компонент 
 
-Как работает:
+(из коллекции React Bits и похожих UI-библиотек),
 
-Принимает целевое значение (target).
+который превращает обычный ползунок (input range / slider)
 
-При изменении target запускает анимацию от текущего к новому.
+в «резиновый» элемент с упругой анимацией.
 
-На каждом кадре обновляет отображаемое число.
+Что делает Elastic Slider
+Позволяет пользователю выбирать значение из диапазона, перетаскивая ползунок.
 
-Что внутри:
+Добавляет эффект упругости:
 
-Состояние current (текущее значение).
+при перетягивании за границы диапазона ползунок «растягивается», как резинка, 
 
-requestAnimationFrame или setInterval для пошагового изменения.
+а затем пружинисто возвращается назад.
 
-Форматирование чисел (разделители тысяч, знаки и т.п.).
+Часто использует spring-физику (Framer Motion или аналоги),
 
-Опционально: анимация через Framer Motion (animate, useSpring).`,
+чтобы движение ощущалось живым и тактильным.
+
+Где обычно используется
+Настройки громкости, яркости, зума и других параметров, где важна приятная обратная связь.
+
+Интерактивные дашборды, медиаплееры, игровые интерфейсы.
+
+Проекты, где хочется выделиться за счёт микроанимаций и «ощущаемого» UI.
+`,
     code: `import ElasticSlider from './ElasticSlider'
   
 <ElasticSlider
@@ -799,7 +835,9 @@ requestAnimationFrame или setInterval для пошагового измен�
     id: 'stepper',
     label: 'Stepper',
     desc:`Что это:
-Пошаговый индикатор (steps): показывает прогресс по этапам (например, оформление заказа: 1 → 2 → 3 → 4).
+Пошаговый индикатор (steps):
+
+показывает прогресс по этапам (например, оформление заказа: 1 → 2 → 3 → 4).
 
 Как работает:
 
@@ -850,7 +888,8 @@ map по шагам → кружки + подписи.
   </Step>
   <Step>
     <h2>How about an input?</h2>
-    <input value={name} onChange={(e) => setName(e.target.value)} placeholder="Your name?"
+    <input value={name} onChange={(e)
+     => setName(e.target.value)} placeholder="Your name?"
   disableStepIndicators={false}
 />
   </Step>

@@ -3,11 +3,13 @@
     height: 200px;
     background: #ff9500;
     border-radius: 15px;
+    font-size: 3rem;
    display: flex;
+   font-family: monospace;
    align-items: center;
    justify-content: center;
-   color: white;
    position: absolute;
    top: 10;
    right: 10;
+    color: black;
 }
