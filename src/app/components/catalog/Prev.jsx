@@ -1,6 +1,7 @@
 'use client';
 
 import styles from '../../styles/Prev.module.css';
+import { dataBase } from '../../data/data';
 
 export default function Prev({ selectedElement }) {
   if (!selectedElement) {

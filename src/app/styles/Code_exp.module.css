@@ -10,7 +10,7 @@
     flex-direction: column;
     position: absolute;
     right: 10;
-    bottom: 10;
+    bottom: -600;
     color: black;
     padding: 5px;
     font-size: 18px;

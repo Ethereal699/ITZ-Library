@@ -1,23 +1,22 @@
 .selected_element_prev{
-   width: 700px;
-   height: 500px;
+   width: 1300px;
+   height: 550px;
    background: #c27406;
    border-radius: 15px;
    display: flex;
    font-size: 16px;
+   position: absolute;
+   left: 450;
    font-family: monospace;
    align-items: center;
    justify-content: center;
-   position: absolute;
-   top: 10;
-   left: 400;
    color: black;
    padding: 5px;
 }
 .selected_element_prev2{
-width: 690px;
-height: 490px;
-background: #ff9500;
+width: 1290px;
+height: 540px;
+background: #414141;
 border-radius: 15px;
 display: flex;
 font-family: monospace;

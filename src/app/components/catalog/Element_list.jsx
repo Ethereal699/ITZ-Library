@@ -27,6 +27,7 @@ export default function Element_list({ onSelectElement }) {
   return (
       <div className={styles.el_list}>
         <div className={styles.el_list2}>
+          
            <ul>
           {elements.map((label) => {
             const item = dataBase.find((btn) => btn.label === label) || {

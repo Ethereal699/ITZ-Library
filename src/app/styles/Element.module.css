@@ -1,5 +1,5 @@
 .selected_element{
-    width: 700px;
+    width: 350px;
     height: 200px;
     background: #c27406;
     border-radius: 15px;
@@ -9,13 +9,13 @@
    align-items: center;
    justify-content: center;
    position: absolute;
-   top: 10;
-   right: 10;
+left: 20;
+bottom: -80;
     color: black;
     padding: 5px;
 }
 .selected_element2{
-width: 690px;
+width: 340px;
 height: 190px;
 background: #ff9500;
 border-radius: 5px;
