@@ -1,8 +1,42 @@
+import SpecularButton from "../components/react bits/Specular";
+import CurvedInput from "../components/react bits/Curved";
+import LineSidebar from "../components/react bits/SideBar";
+import AnimatedList from "../components/react bits/AnimList";
+import TiltedCard from "../components/react bits/TitledCard";
+import ReflectiveCard from "../components/react bits/Reflective";
+import Folder from "../components/react bits/Folder";
+import ProfileCard from "../components/react bits/ProfileCard";
+import Dock from "../components/react bits/Dock";
+import GooeyNav from "../components/react bits/Gooey";
+import PixelCard from "../components/react bits/Pixel";
+import Carousel from "../components/react bits/Carousel";
+import SpotlightCard from "../components/react bits/Spotlight";
+import BorderGlow from "../components/react bits/Border";
+import GlassIcons from "../components/react bits/Glass";
+import ElasticSlider from "../components/react bits/Slider";
+import Counter from "../components/react bits/Counter";
+import Stepper, { Step } from "../components/react bits/Stepper";
+import {
+  FiHome,
+  FiUser,
+  FiSettings,
+  FiMail,
+  FiFileText,
+  FiCircle,
+  FiLayers,
+  FiLayout,
+  FiCode
+} from 'react-icons/fi';
 
+import {
+  RiVolumeDownFill,
+  RiVolumeUpFill
+} from 'react-icons/ri';
 export const dataBase = [
   {
     id: 'specular-button',
     label: 'Specular Button',
+    component: SpecularButton,
     desc:`Что это:
 Кнопка с реалистичным металлическим/стеклянным блеском,
 
@@ -39,7 +73,8 @@ Canvas (WebGL) внутри кнопки для рендеринга эффек�
 фрагментный: вычисляет SDF формы, угол нормали, расстояние до края,
 
 интерполирует яркость в зависимости от близости курсора.`,
-    props: {
+     props: {
+      children: 'Get Started',
       size: 'lg',
       radius: 18,
       tint: '#ffffff',
@@ -55,7 +90,9 @@ Canvas (WebGL) внутри кнопки для рендеринга эффек�
       speed: 0.35,
       followMouse: true,
       proximity: 250,
-      autoAnimate: false,
+      autoAnimate: true,
+      disabled: false,
+      type: 'button'
     },
     
 code: `import { useRef, useEffect } from 'react';
@@ -307,6 +344,7 @@ export default SpecularButton;`
   {
     id: 'curved-input',
     label: 'Curved Input',
+    component:CurvedInput,
     desc:`Что это:
 Поле ввода (input) с изогнутой/закруглённой формой и визуальными эффектами 
 
@@ -343,23 +381,23 @@ background: linear-gradient(...) или radial-gradient(...),
 box-shadow для свечения.
 
 `,
+    
     props: {
-      size: 'md',
-      radius: 12,
-      tint: '#e0e0ff',
-      tintOpacity: 0.1,
-      blur: 4,
-      textColor: '#ffffff',
-      lineColor: '#a0a0ff',
-      baseColor: '#3a3a5a',
-      intensity: 1.2,
-      shineSize: 12,
-      shineFade: 50,
-      thickness: 1.2,
-      speed: 0.3,
-      followMouse: true,
-      proximity: 200,
-      autoAnimate: false,
+      defaultValue: '',
+      placeholder: 'Enter your email',
+      buttonText: 'Get Started',
+      type: 'email',
+      ariaLabel: 'Email input',
+      theme: 'dark',
+      width: 450,
+      bend: 28,
+      height: 64,
+      cornerRadius: 18,
+      borderWidth: 1.5,
+      fontSize: 16,
+      shadowSize: 'md',
+      showButton: true,
+      showIcon: true
     },
     code:`
 import { useEffect, useId, useLayoutEffect, useMemo, useRef, useState } from 'react';
@@ -877,6 +915,7 @@ export default CurvedInput;
   {
     id: 'line-sidebar',
     label: 'Line Sidebar',
+    component:LineSidebar,
     desc:`Что это:
 Боковое навигационное меню со статичным списком ссылок.
  При движении курсора рядом с элементом подсветка и смещение «курсора»
@@ -905,6 +944,32 @@ export default CurvedInput;
 Декоративный элемент (линия/полоса), который анимируется через CSS transform / opacity.
 
 Обработчик onMouseMove на контейнере для вычисления позиции курсора.`,
+ props: {
+      items: [
+        'Overview',
+        'Components',
+        'Animations',
+        'Backgrounds',
+        'Showcase'
+      ],
+      accentColor: '#A855F7',
+      textColor: '#c4c4c4',
+      markerColor: '#6c6c6c',
+      showIndex: true,
+      showMarker: true,
+      proximityRadius: 100,
+      maxShift: 30,
+      falloff: 'smooth',
+      markerLength: 60,
+      markerGap: 0,
+      tickScale: 0.5,
+      scaleTick: true,
+      itemGap: 20,
+      fontSize: 1.1,
+      smoothing: 100,
+      defaultActive: 0
+    },
+
     code: `import { useRef, useState, useCallback, useEffect } from 'react';
 import './LineSidebar.css';
 
@@ -1089,6 +1154,7 @@ export default LineSidebar;
   {
     id: 'animated-list',
     label: 'Animated List',
+    component:AnimatedList,
     desc:`Что это:
 Список, в котором элементы появляются/исчезают с задержкой и плавной анимацией 
 (часто «волной» по очереди).
@@ -1114,6 +1180,20 @@ map по массиву данных → рендер карточек/стро�
 CSS keyframes (@keyframes fade-in-up),
 
 `,
+  props: {
+      items: [
+        'React',
+        'JavaScript',
+        'Next.js',
+        'CSS',
+        'Animations',
+        'UI Components'
+      ],
+      showGradients: true,
+      enableArrowNavigation: false,
+      displayScrollbar: true,
+      initialSelectedIndex: 0
+    },
     code: `import { useRef, useState, useEffect, useCallback } from 'react';
 import { motion, useInView } from 'motion/react';
 import './AnimatedList.css';
@@ -1270,6 +1350,7 @@ export default AnimatedList;
   {
     id: 'tilted-card',
     label: 'Tilted Card',
+    component:TiltedCard,
     desc:`Что это:
 Карточка, которая наклоняется в 3D в сторону курсора. Создаёт эффект «физической» карточки.
 
@@ -1296,6 +1377,20 @@ export default AnimatedList;
 «блик» (glare) — полупрозрачный слой, который двигается в противоположную сторону.
 
 параллакс содержимого (заголовок/картинка двигаются чуть сильнее фона).`,
+  props: {
+      imageSrc: '/images/card.jpg',
+      altText: 'Tilted card example',
+      captionText: 'Move cursor over the card',
+      containerHeight: '320px',
+      containerWidth: '320px',
+      imageHeight: '300px',
+      imageWidth: '300px',
+      scaleOnHover: 1.08,
+      rotateAmplitude: 14,
+      showMobileWarning: false,
+      showTooltip: true,
+      displayOverlayContent: false
+    },
     code: `import { useRef, useState } from 'react';
 import { motion, useMotionValue, useSpring } from 'motion/react';
 import './TiltedCard.css';
@@ -1434,6 +1529,7 @@ export default function TiltedCard({
   {
     id: 'reflective-card',
     label: 'Reflective Card',
+    component:ReflectiveCard,
     desc:`Что это:
 Карточка с эффектом отражения/блика, который следует за курсором 
 (как свет на глянцевой поверхности).
@@ -1456,6 +1552,18 @@ export default function TiltedCard({
 
 Обработчик onMouseMove, 
 который обновляет CSS‑переменные (например, --x, --y) или style градиента.`,
+  props: {
+      blurStrength: 12,
+      color: 'white',
+      metalness: 1,
+      roughness: 0.4,
+      overlayColor: 'rgba(255, 255, 255, 0.1)',
+      displacementStrength: 20,
+      noiseScale: 1,
+      specularConstant: 1.2,
+      grayscale: 1,
+      glassDistortion: 0
+  },
     code: `import { useEffect, useRef } from 'react';
 import './ReflectiveCard.css';
 import { Fingerprint, Activity, Lock } from 'lucide-react';
@@ -1611,6 +1719,7 @@ export default ReflectiveCard;
   {
     id: 'folder',
     label: 'Folder',
+    component:Folder,
     desc:`Что это:
 Компонент‑«папка»: обычно карточка,
 
@@ -1635,6 +1744,15 @@ export default ReflectiveCard;
 «Крышка» (cover) — передний план.
 
 «Внутренность» — контент, который становится виден при «открытии».`,
+ props: {
+      color: '#5227FF',
+      size: 1,
+      items: [
+        'First document',
+        'Second document',
+        'Third document'
+      ]
+  },
     code: `import { useState } from 'react';
 import './Folder.css';
 
@@ -1762,6 +1880,7 @@ export default Folder;
   {
     id: 'profile-card',
     label: 'Profile Card',
+    component:ProfileCard,
     desc:`Что это:
 Карточка профиля пользователя:
 
@@ -1790,6 +1909,24 @@ hover‑эффекты (подъём, тень, свечение),
 Кнопки/ссылки (соцсети, действия).
 
 CSS‑анимации для hover/появления.`,
+ props: {
+      avatarUrl: 'https://i.pravatar.cc/400?img=12',
+      miniAvatarUrl: 'https://i.pravatar.cc/400?img=12',
+      iconUrl: '',
+      grainUrl: '',
+      behindGlowEnabled: true,
+      behindGlowColor: 'rgba(125, 190, 255, 0.67)',
+      behindGlowSize: '50%',
+      enableTilt: true,
+      enableMobileTilt: false,
+      mobileTiltSensitivity: 5,
+      name: 'Alex Johnson',
+      title: 'Frontend Developer',
+      handle: 'alexdev',
+      status: 'Online',
+      contactText: 'Contact',
+      showUserInfo: true
+  },
     code: `import React, { useEffect, useRef, useCallback, useMemo } from 'react';
 import './ProfileCard.css';
 
@@ -2167,6 +2304,7 @@ export default ProfileCard;
   {
     id: 'dock',
     label: 'Dock',
+    component:Dock,
     desc:`Что это:
 Панка в стиле macOS Dock: ряд иконок, которые увеличиваются около курсора.
 
@@ -2195,6 +2333,31 @@ translateY (лёгкий подъём) в зависимости от расст
 Логика вычисления «центра» и расстояний.
 
 CSS transform: scale(...) translate(...).`,
+   props: {
+      items: [
+        {
+          icon: <FiHome />,
+          label: 'Home'
+        },
+        {
+          icon: <FiUser />,
+          label: 'Profile'
+        },
+        {
+          icon: <FiMail />,
+          label: 'Messages'
+        },
+        {
+          icon: <FiSettings />,
+          label: 'Settings'
+        }
+      ],
+      magnification: 70,
+      distance: 200,
+      panelHeight: 68,
+      dockHeight: 160,
+      baseItemSize: 50
+  },
     code: `'use client';
 
 import { motion, useMotionValue, useSpring, useTransform, AnimatePresence } from 'motion/react';
@@ -2343,6 +2506,7 @@ export default function Dock({
   {
     id: 'gooey-nav',
     label: 'Gooey Nav',
+    component:GooeyNav,
     desc:`Что это:
 Навигация с «липким» (gooey) эффектом: при переключении элементов кажется,
 что они перетекают друг в друга,
@@ -2367,6 +2531,33 @@ export default function Dock({
 Декоративный элемент (фон/«капля»), который анимируется между кнопками.
 
 SVG‑фильтр, подключённый через CSS filter: url(#goo).`,
+ props: {
+      items: [
+        {
+          label: 'Home',
+          href: '#home'
+        },
+        {
+          label: 'Work',
+          href: '#work'
+        },
+        {
+          label: 'About',
+          href: '#about'
+        },
+        {
+          label: 'Contact',
+          href: '#contact'
+        }
+      ],
+      animationTime: 600,
+      particleCount: 15,
+      particleDistances: [90, 10],
+      particleR: 100,
+      timeVariance: 300,
+      colors: [1, 2, 3, 1, 2, 3, 1, 4],
+      initialActiveIndex: 0
+  },
     code: `import { useRef, useEffect, useState } from 'react';
 import './GooeyNav.css';
 
@@ -2540,6 +2731,7 @@ export default GooeyNav;
   {
     id: 'pixel-card',
     label: 'Pixel Card',
+    component:PixelCard,
     desc:`Что это:
 Карточка с пиксельным/мозаичным эффектом:
 
@@ -2566,6 +2758,25 @@ export default GooeyNav;
 Анимация opacity / transform / background.
 
 Опционально: изображение/контент поверх сетки.`,
+  props: {
+      variant: 'blue',
+      gap: 6,
+      speed: 35,
+      colors: '#e0f2fe,#7dd3fc,#0ea5e9',
+      noFocus: false,
+      children: (
+        <div
+          style={{
+            position: 'relative',
+            zIndex: 1,
+            padding: '24px',
+            color: '#ffffff'
+          }}
+        >
+          Hover me
+        </div>
+      )
+  },
     code: `import { useEffect, useRef } from 'react';
 import './PixelCard.css';
 
@@ -2815,6 +3026,7 @@ export default function PixelCard({ variant = 'default', gap, speed, colors, noF
   {
     id: 'carousel',
     label: 'Carousel',
+    component:Carousel,
     desc:`Что это:
 Слайдер/карусель: набор карточек/изображений, которые можно прокручивать горизонтально.
 
@@ -2843,6 +3055,47 @@ export default function PixelCard({ variant = 'default', gap, speed, colors, noF
 Индикаторы (точки/полоски).
 
 Логика переключения индекса и анимация transform.`,
+props: {
+      items: [
+        {
+          id: 1,
+          title: 'Text',
+          description: 'Text animations',
+          icon: <FiFileText className="carousel-icon" />
+        },
+        {
+          id: 2,
+          title: 'Animation',
+          description: 'Smooth UI effects',
+          icon: <FiCircle className="carousel-icon" />
+        },
+        {
+          id: 3,
+          title: 'Components',
+          description: 'Reusable elements',
+          icon: <FiLayers className="carousel-icon" />
+        },
+        {
+          id: 4,
+          title: 'Backgrounds',
+          description: 'Creative visual effects',
+          icon: <FiLayout className="carousel-icon" />
+        },
+        {
+          id: 5,
+          title: 'Code',
+          description: 'Frontend examples',
+          icon: <FiCode className="carousel-icon" />
+        }
+      ],
+      baseWidth: 300,
+      autoplay: false,
+      autoplayDelay: 3000,
+      pauseOnHover: true,
+      loop: true,
+      round: false
+  },
+
     code: `import { useEffect, useMemo, useRef, useState } from 'react';
 import { motion, useMotionValue, useTransform } from 'motion/react';
 // replace icons with your own if needed
@@ -3113,6 +3366,7 @@ export default function Carousel({
   {
     id: 'spotlight-card',
     label: 'Spotlight Card',
+    component:SpotlightCard,
     desc:`Что это:
 Карточка/кнопка с светящейся рамкой, которая может двигаться или пульсировать.
 
@@ -3133,6 +3387,20 @@ export default function Carousel({
 CSS‑анимация @keyframes для движения градиента.
 
 Hover‑стили для усиления эффекта.`,
+ props: {
+      spotlightColor: 'rgba(168, 85, 247, 0.35)',
+      children: (
+        <div
+          style={{
+            padding: '32px',
+            color: '#ffffff'
+          }}
+        >
+          <h3>Spotlight Card</h3>
+          <p>Move the cursor over this card.</p>
+        </div>
+      )
+  },
     code: `import { useRef } from 'react';
 import './SpotlightCard.css';
 
@@ -3162,6 +3430,7 @@ export default SpotlightCard;
   {
     id: 'border-glow',
     label: 'Border Glow',
+    component:BorderGlow,
     desc:`
 Border Glow — это анимированный React-компонент из коллекции React Bits,
 
@@ -3185,6 +3454,29 @@ Border Glow — это анимированный React-компонент из 
 На CTA-кнопках и важных блоках (pricing, features).
 
 В тёмных темах, где нужен акцент за счёт света и цвета.`,
+   props: {
+      edgeSensitivity: 30,
+      glowColor: '40 80% 80%',
+      backgroundColor: '#120F17',
+      borderRadius: 28,
+      glowRadius: 40,
+      glowIntensity: 1,
+      coneSpread: 25,
+      animated: true,
+      colors: ['#c084fc', '#f472b6', '#38bdf8'],
+      fillOpacity: 0.5,
+      children: (
+        <div
+          style={{
+            padding: '32px',
+            color: '#ffffff'
+          }}
+        >
+          <h3>Border Glow</h3>
+          <p>Hover close to the edge.</p>
+        </div>
+      )
+  },
     code: `import { useRef, useCallback, useEffect } from 'react';
 import './BorderGlow.css';
 
@@ -3357,6 +3649,7 @@ export default BorderGlow;
   {
     id: 'glass-icons',
     label: 'Glass Icons',
+    component:GlassIcons,
     desc:`Что это:
 Набор иконок в «стеклянном» стиле: полупрозрачные, с размытием фона (glassmorphism).
 
@@ -3383,6 +3676,30 @@ backdrop-filter: blur(...).
 Карточки‑плашки с иконками (SVG / шрифт‑иконки).
 
 CSS glassmorphism: backdrop-filter, box-shadow, border.`,
+props: {
+      items: [
+        {
+          icon: <FiHome />,
+          label: 'Home',
+          color: 'blue'
+        },
+        {
+          icon: <FiUser />,
+          label: 'Profile',
+          color: 'purple'
+        },
+        {
+          icon: <FiMail />,
+          label: 'Mail',
+          color: 'red'
+        },
+        {
+          icon: <FiSettings />,
+          label: 'Settings',
+          color: 'orange'
+        }
+      ]
+  },
     code: `import './GlassIcons.css';
 
 const gradientMapping = {
@@ -3425,6 +3742,7 @@ export default GlassIcons;
   {
     id: 'elastic-slider',
     label: 'Elastic Slider',
+    component:ElasticSlider,
     desc:`
 Elastic Slider — это анимированный React-компонент 
 
@@ -3454,6 +3772,15 @@ Elastic Slider — это анимированный React-компонент
 
 Проекты, где хочется выделиться за счёт микроанимаций и «ощущаемого» UI.
 `,
+ props: {
+      defaultValue: 50,
+      startingValue: 0,
+      maxValue: 100,
+      isStepped: false,
+      stepSize: 1,
+      leftIcon: <RiVolumeDownFill />,
+      rightIcon: <RiVolumeUpFill />
+  },
     code: `import { animate, motion, useMotionValue, useMotionValueEvent, useTransform } from 'motion/react';
 import { useEffect, useRef, useState } from 'react';
 import { Icon } from '@chakra-ui/react';
@@ -3644,6 +3971,7 @@ function decay(value, max) {
   {
     id: 'counter',
     label: 'Counter',
+    component:Counter,
     desc:`Что это:
 Анимированный счётчик: число плавно увеличивается/уменьшается до целевого значения.
 
@@ -3664,6 +3992,19 @@ requestAnimationFrame или setInterval для пошагового измен�
 Форматирование чисел (разделители тысяч, знаки и т.п.).
 
 Опционально: анимация через Framer Motion (animate, useSpring).`,
+  props: {
+      value: 2026,
+      fontSize: 72,
+      padding: 4,
+      gap: 8,
+      borderRadius: 8,
+      horizontalPadding: 12,
+      textColor: '#ffffff',
+      fontWeight: 700,
+      gradientHeight: 20,
+      gradientFrom: '#111111',
+      gradientTo: 'transparent'
+  },
     code: `import { motion, useSpring, useTransform } from 'motion/react';
 import { useEffect } from 'react';
 
@@ -3795,6 +4136,7 @@ export default function Counter({
   {
     id: 'stepper',
     label: 'Stepper',
+    component:Stepper,
     desc:`Что это:
 Пошаговый индикатор (steps):
 
@@ -3823,6 +4165,19 @@ map по шагам → кружки + подписи.
 Линия (через псевдоэлемент или отдельный div).
 
 Логика переключения шагов (кнопки «Назад» / «Вперёд» или внешнее управление).`,
+  props: {
+    initialStep: 1,
+    backButtonText: 'Back',
+    nextButtonText: 'Continue',
+    disableStepIndicators: false
+  },
+  children: (
+    <>
+      <Step>First step content</Step>
+      <Step>Second step content</Step>
+      <Step>Third step content</Step>
+    </>
+  ),
     code: `import React, { useState, Children, useRef, useLayoutEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 

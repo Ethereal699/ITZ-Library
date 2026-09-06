@@ -1,6 +1,6 @@
 .selected_element_prev{
    width: 700px;
-   height: 200px;
+   height: 500px;
    background: #c27406;
    border-radius: 15px;
    display: flex;
@@ -16,7 +16,7 @@
 }
 .selected_element_prev2{
 width: 690px;
-height: 190px;
+height: 490px;
 background: #ff9500;
 border-radius: 15px;
 display: flex;
