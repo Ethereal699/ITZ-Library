@@ -1,0 +1,96 @@
+.el_list {
+    grid-area: list;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(25, 25, 30, 0.98) 0%, rgba(18, 18, 22, 0.99) 100%);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 149, 0, 0.12);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    overflow-y: auto;
+}
+
+.el_list ul {
+    list-style: none;
+    margin: 0;
+    padding: 16px;
+    overflow-y: auto;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+/* Кастомный скроллбар */
+.el_list ul::-webkit-scrollbar {
+    width: 4px;
+}
+
+.el_list ul::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.el_list ul::-webkit-scrollbar-thumb {
+    background: rgba(255, 149, 0, 0.25);
+    border-radius: 4px;
+}
+
+.el_list ul::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 149, 0, 0.4);
+}
+
+.el_list li {
+    position: relative;
+    padding: 8px 12px 8px 40px;
+    min-height: 40px;
+    border-radius: 12px;
+    border: 1px solid transparent;
+    font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.55);
+    letter-spacing: 0.01em;
+    line-height: 1.4;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    overflow: hidden;
+    will-change: background, border-color;
+    transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.el_list li::before {
+    content: attr(data-index);
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: rgba(255, 149, 0, 0.25);
+    font-variant-numeric: tabular-nums;
+    transition: color 0.25s ease;
+    z-index: 1;
+}
+
+.el_list li:hover {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.el_list li:hover::before {
+    color: rgba(255, 149, 0, 0.6);
+}
+
+.el_list li.active {
+    color: #ff9500;
+    background: rgba(255, 149, 0, 0.08);
+    border-color: rgba(255, 149, 0, 0.15);
+    transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.el_list li.active::before {
+    color: #ff9500;
+    font-size: 0.8rem;
+}

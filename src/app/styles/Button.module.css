@@ -1,0 +1,34 @@
+.btn {
+    margin-top: 28px;
+    background: linear-gradient(135deg, #ff9500 0%, #ff6b00 100%);
+    color: #000000;
+    padding: 16px 32px;
+    border-radius: 14px;
+    border: none;
+    font-weight: 700;
+    font-size: 1.05rem;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 20px rgba(255, 149, 0, 0.3);
+    letter-spacing: 0.02em;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(255, 149, 0, 0.45);
+    background: linear-gradient(135deg, #ffb347 0%, #ff9500 100%);
+}
+
+.btn:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 16px rgba(255, 149, 0, 0.3);
+}
+
+.btn:focus-visible {
+    outline: 2px solid #ff9500;
+    outline-offset: 2px;
+}

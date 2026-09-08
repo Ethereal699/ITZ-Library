@@ -1,0 +1,101 @@
+.code_sec {
+    grid-area: code;
+    width: 100%;
+    height: 100%;
+    min-height: 350px;
+    background: linear-gradient(180deg, rgba(25, 25, 30, 0.98) 0%, rgba(18, 18, 22, 0.99) 100%);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 149, 0, 0.15);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+}
+
+.code_sec:hover {
+    border-color: rgba(255, 149, 0, 0.25);
+    box-shadow: 
+        0 12px 40px rgba(0, 0, 0, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+/* Декоративная шапка с точками */
+.code_sec::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.02);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.code_sec::after {
+    content: '● ● ●';
+    position: absolute;
+    top: 12px;
+    left: 16px;
+    font-size: 8px;
+    letter-spacing: 4px;
+    color: rgba(255, 149, 0, 0.4);
+    pointer-events: none;
+}
+
+.code_block {
+    font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+    font-size: 0.85rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.85);
+    background: transparent;
+    padding: 52px 24px 24px;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    tab-size: 2;
+    -moz-tab-size: 2;
+}
+
+/* Кастомный скроллбар */
+.code_block::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+.code_block::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.code_block::-webkit-scrollbar-thumb {
+    background: rgba(255, 149, 0, 0.3);
+    border-radius: 3px;
+}
+
+.code_block::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 149, 0, 0.5);
+}
+
+/* Подсветка синтаксиса (базовая) */
+.code_block code {
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .code_sec {
+        min-height: 280px;
+    }
+    
+    .code_block {
+        font-size: 0.75rem;
+        padding: 52px 16px 16px;
+    }
+}

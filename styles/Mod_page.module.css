@@ -1,0 +1,52 @@
+.mod_page {
+    width: 100%;
+    min-height: calc(100vh - 100px);
+    display: grid;
+    grid-template-columns: 280px 1fr 1fr;
+    grid-template-rows: auto 1fr 1fr;
+    grid-template-areas:
+        "selected selected selected"
+        "list code code"
+        "list code_exp code_exp";
+    gap: 20px;
+    padding: 24px;
+    max-width: 1600px;
+    margin: 0 auto;
+    animation: fadeIn 0.6s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Адаптивность для планшетов */
+@media (max-width: 1200px) {
+    .mod_page {
+        grid-template-columns: 240px 1fr;
+        grid-template-areas:
+            "selected selected"
+            "list code"
+            "list code_exp";
+    }
+}
+
+/* Адаптивность для мобильных */
+@media (max-width: 768px) {
+    .mod_page {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "selected"
+            "list"
+            "code"
+            "code_exp";
+        padding: 16px;
+        gap: 16px;
+    }
+}

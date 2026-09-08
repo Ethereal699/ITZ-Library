@@ -1,0 +1,48 @@
+.scrollContent {
+    padding: 72px 24px 24px;
+    padding-right: 12px;
+    overflow-y: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+@media (max-width: 768px) {
+    .scrollContent {
+        padding: 72px 16px 16px;
+        padding-right: 12px;
+    }
+}
+
+.scrollContent::-webkit-scrollbar {
+    display: none;
+}
+
+.scrollTrack {
+    position: absolute;
+    right: 4px;
+    top: 4px;
+    bottom: 4px;
+    width: 6px;
+    background: rgba(255, 149, 0, 0.1);
+    border-radius: 3px;
+    pointer-events: none;
+}
+
+.scrollThumb {
+    position: absolute;
+    right: 0;
+    width: 6px;
+    background: rgba(255, 149, 0, 0.3);
+    border-radius: 3px;
+    pointer-events: none;
+    transition: background 0.2s, opacity 0.2s;
+    opacity: 0.3;
+}
+
+.scrollThumb.visible {
+    opacity: 1;
+}
+
+.scrollThumb:hover {
+    background: rgba(255, 149, 0, 0.5);
+}

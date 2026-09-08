@@ -1,0 +1,85 @@
+.mod_page_container {
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 24px;
+    opacity: 0;
+    animation: fadeInUp 0.6s ease-out forwards;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+}
+
+.mod_page {
+    width: 100%;
+    height: calc(100vh - 280px);
+    display: grid;
+    grid-template-columns: 280px 400px 400px;
+    grid-template-rows: 1fr;
+    grid-template-areas:
+        "list code code_exp";
+    gap: 20px;
+    padding: 24px;
+    max-width: 1600px;
+    margin: 0 auto;
+    overflow: hidden;
+    opacity: 0;
+    animation: fadeInUp 0.6s ease-out forwards;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    align-items: stretch;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Адаптивность для планшетов */
+@media (max-width: 1200px) {
+    .mod_page_container {
+        padding: 20px;
+        gap: 16px;
+        height: calc(100vh - 200px);
+    }
+    
+    .mod_page {
+        grid-template-columns: 240px 1fr;
+        grid-template-rows: 1fr 1fr;
+        grid-template-areas:
+            "list code"
+            "list code_exp";
+        height: calc(100vh - 260px);
+    }
+}
+
+/* Адаптивность для мобильных */
+@media (max-width: 768px) {
+    .mod_page_container {
+        padding: 16px;
+        gap: 12px;
+        height: auto;
+        overflow: visible;
+    }
+    
+    .mod_page {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        grid-template-areas:
+            "list"
+            "code"
+            "code_exp";
+        padding: 16px;
+        gap: 16px;
+        height: auto;
+        min-height: 500px;
+    }
+}

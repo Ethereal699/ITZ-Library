@@ -1,0 +1,108 @@
+.code_exp {
+    grid-area: code_exp;
+    width: 100%;
+    height: 100%;
+    min-height: 350px;
+    background: linear-gradient(180deg, rgba(30, 32, 38, 0.95) 0%, rgba(22, 24, 30, 0.98) 100%);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 149, 0, 0.15);
+    border-radius: 20px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+}
+
+.code_exp:hover {
+    border-color: rgba(255, 149, 0, 0.25);
+    box-shadow: 
+        0 12px 40px rgba(0, 0, 0, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+/* Декоративная шапка */
+.code_exp::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.02);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.code_exp::after {
+    content: '● ● ●';
+    position: absolute;
+    top: 12px;
+    left: 16px;
+    font-size: 8px;
+    letter-spacing: 4px;
+    color: rgba(255, 149, 0, 0.4);
+    pointer-events: none;
+}
+
+.code_exp > div {
+    padding: 52px 24px 24px;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+}
+
+.code_block {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 0.9rem;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.8);
+    background: transparent;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    letter-spacing: 0.01em;
+}
+
+.code_block p {
+    margin: 0 0 12px 0;
+}
+
+.code_block p:last-child {
+    margin-bottom: 0;
+}
+
+/* Кастомный скроллбар */
+.code_exp > div::-webkit-scrollbar {
+    width: 6px;
+}
+
+.code_exp > div::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.code_exp > div::-webkit-scrollbar-thumb {
+    background: rgba(255, 149, 0, 0.3);
+    border-radius: 3px;
+}
+
+.code_exp > div::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 149, 0, 0.5);
+}
+
+@media (max-width: 768px) {
+    .code_exp {
+        min-height: 280px;
+    }
+    
+    .code_exp > div {
+        padding: 52px 16px 16px;
+    }
+    
+    .code_block {
+        font-size: 0.85rem;
+    }
+}
