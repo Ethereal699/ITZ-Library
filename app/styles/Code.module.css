@@ -1,0 +1,75 @@
+.code_sec {
+  width: 700px;
+  height: 625px;
+  box-sizing: border-box;
+  background: rgb(3, 3, 43);
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  bottom: -600;
+  left: 400;
+color: rgb(148, 148, 148);
+  padding: 5px;
+  overflow: hidden;
+  font-size: 18px;
+}
+
+.code_sec2 {
+  width: 690px;
+  height: 615px;
+  min-width: 0;
+  min-height: 0;
+  box-sizing: border-box;
+ background: rgb(0, 0, 66);
+  border: 2px solid black;
+  border-radius: 15px;
+  padding: 5px;
+  overflow-y: auto;
+  overflow-x: auto;
+}
+.code_sec_prev2{
+  border: 2px solid black;
+  border-radius: 15px;
+  width: 690px;
+  height: 615px;
+  background: rgb(0, 0, 66);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; 
+}
+.code-block {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  margin: 0;
+  box-sizing: border-box;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  font-family: monospace;
+  font-size: 18px;
+  line-height: 1.5;
+  overflow: visible;
+}
+.code_sec2::-webkit-scrollbar{
+width: 10px;
+height: 10px;
+background: none;
+}
+.code_sec2::-webkit-scrollbar-thumb{
+background: rgb(0, 0, 66);
+background-clip: padding-box;
+border-radius: 15px;
+background: rgb(3, 3, 43);
+}
+.code_sec2::-webkit-scrollbar-track{
+margin: 12px 6px 12px 0; 
+}
+.code_sec2::-webkit-scrollbar-corner {
+  background: transparent;
+}

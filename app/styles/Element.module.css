@@ -1,0 +1,28 @@
+.selected_element{
+    width: 350px;
+    height: 200px;
+    background: rgb(3, 3, 43);
+    border-radius: 15px;
+   display: flex;
+   font-size: 16px;
+   font-family: monospace;
+   align-items: center;
+   justify-content: center;
+   position: absolute;
+left: 20;
+bottom: -80;
+  color: rgb(148, 148, 148);
+    padding: 5px;
+}
+.selected_element2{
+width: 340px;
+height: 190px;
+background: rgb(0, 0, 66);
+border-radius: 5px;
+display: flex;
+font-family: monospace;
+border: 2px solid black;
+display: flex;
+align-items: center;
+justify-content: center;
+}
