@@ -1,0 +1,10 @@
+.hero{
+    width: 100vw;
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.logo a{
+    background: rgb(0, 0, 66);
+}

@@ -1,0 +1,38 @@
+:root {
+  --black: #000000;
+  --white: #ffffff;
+  --orange: #ff9500;
+}
+
+html,
+body,
+#__next {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: rgb(3, 3, 24);
+  color: var(--white);
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  padding: 48px 16px;
+}
+
+a{
+   width: 250px;
+        height: 0px;
+        background:  var(--orange);
+        color: black;
+        border: none;
+        border-radius: 10px;
+        text-decoration: none;
+        
+        text-align: center;
+}
