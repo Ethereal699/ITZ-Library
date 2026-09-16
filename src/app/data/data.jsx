@@ -14,7 +14,7 @@ import SpotlightCard from "../components/react bits/Spotlight";
 import BorderGlow from "../components/react bits/Border";
 import GlassIcons from "../components/react bits/Glass";
 import ElasticSlider from "../components/react bits/Slider";
-import Counter from "../components/react bits/Counter";
+import PillNav from "../components/react bits/PillNav";
 import Stepper, { Step } from "../components/react bits/Stepper";
 import Image from "next/image";
 
@@ -34,6 +34,7 @@ import {
   RiVolumeDownFill,
   RiVolumeUpFill
 } from 'react-icons/ri';
+import { label } from "motion/react-client";
 export const dataBase = [
   {
     id: 'specular-button',
@@ -392,7 +393,7 @@ box-shadow для свечения.
       ariaLabel: 'Email input',
       theme: 'dark',
       width: 450,
-      bend: 28,
+      bend: 50,
       height: 64,
       cornerRadius: 18,
       borderWidth: 1.5,
@@ -2541,6 +2542,8 @@ export default function Dock({
 
 SVG‑фильтр, подключённый через CSS filter: url(#goo).`,
  props: {
+    className: 'gooey-nav-card',
+
       items: [
         {
           label: 'Home',
@@ -3094,8 +3097,8 @@ props: {
         }
       ],
       baseWidth: 300,
-      autoplay: false,
-      autoplayDelay: 3000,
+      autoplay: true,
+      autoplayDelay: 1000,
       pauseOnHover: true,
       loop: true,
       round: false
@@ -3703,6 +3706,16 @@ props: {
           icon: <FiSettings />,
           label: 'Settings',
           color: 'orange'
+        },
+        {
+          icon: <FiLayout />,
+          label: 'Browser',
+          color: 'cyan'
+        },
+        {
+          icon: <FiCode />,
+          label: 'VSCode',
+          color: 'green'
         }
       ]
   },
@@ -3975,183 +3988,6 @@ function decay(value, max) {
 `.trim(),
   },
   {
-    id: 'counter',
-    label: 'Counter',
-    component:Counter,
-    desc:`Что это:
-Анимированный счётчик: число плавно увеличивается/уменьшается до целевого значения.
-
-Как работает:
-
-Принимает целевое значение (target).
-
-При изменении target запускает анимацию от текущего к новому.
-
-На каждом кадре обновляет отображаемое число.
-
-Что внутри:
-
-Состояние current (текущее значение).
-
-requestAnimationFrame или setInterval для пошагового изменения.
-
-Форматирование чисел (разделители тысяч, знаки и т.п.).
-
-Опционально: анимация через Framer Motion (animate, useSpring).`,
-  props: {
-      value: 2026,
-      fontSize: 72,
-      padding: 4,
-      gap: 8,
-      borderRadius: 8,
-      horizontalPadding: 12,
-      textColor: '#ffffff',
-      fontWeight: 700,
-      gradientHeight: 20,
-      gradientFrom: '#111111',
-      gradientTo: 'transparent'
-  },
-  children:(
-<Counter
-  value={1}
-  places={[100, 10, 1]}
-  fontSize={80}
-  padding={5}
-  gap={10}
-  textColor="white"
-  fontWeight={900}
-  digitPlaceHolders
-/>
-  ),
-    code: `import { motion, useSpring, useTransform } from 'motion/react';
-import { useEffect } from 'react';
-
-import './Counter.css';
-
-function Number({ mv, number, height }) {
-  let y = useTransform(mv, latest => {
-    let placeValue = latest % 10;
-    let offset = (10 + number - placeValue) % 10;
-    let memo = offset * height;
-    if (offset > 5) {
-      memo -= 10 * height;
-    }
-    return memo;
-  });
-  return (
-    <motion.span className="counter-number" style={{ y }}>
-      {number}
-    </motion.span>
-  );
-}
-
-function normalizeNearInteger(num) {
-  const nearest = Math.round(num);
-  const tolerance = 1e-9 * Math.max(1, Math.abs(num));
-  return Math.abs(num - nearest) < tolerance ? nearest : num;
-}
-
-function getValueRoundedToPlace(value, place) {
-  const scaled = value / place;
-  return Math.floor(normalizeNearInteger(scaled));
-}
-
-function Digit({ place, value, height, digitStyle }) {
-  const isDecimal = place === '.';
-  const valueRoundedToPlace = isDecimal ? 0 : getValueRoundedToPlace(value, place);
-  const animatedValue = useSpring(valueRoundedToPlace);
-
-  useEffect(() => {
-    if (!isDecimal) {
-      animatedValue.set(valueRoundedToPlace);
-    }
-  }, [animatedValue, valueRoundedToPlace, isDecimal]);
-
-  if (isDecimal) {
-    return (
-      <span className="counter-digit" style={{ height, ...digitStyle, width: 'fit-content' }}>
-        .
-      </span>
-    );
-  }
-
-  return (
-    <span className="counter-digit" style={{ height, ...digitStyle }}>
-      {Array.from({ length: 10 }, (_, i) => (
-        <Number key={i} mv={animatedValue} number={i} height={height} />
-      ))}
-    </span>
-  );
-}
-
-export default function Counter({
-  value,
-  fontSize = 100,
-  padding = 0,
-  places = [...value.toString()].map((ch, i, a) => {
-    ch == '.';
-    if (ch === '.') {
-      return '.';
-    } else {
-      return (
-        10 **
-        (a.indexOf('.') === -1 ? a.length - i - 1 : i < a.indexOf('.') ? a.indexOf('.') - i - 1 : -(i - a.indexOf('.')))
-      );
-    }
-  }),
-  gap = 8,
-  borderRadius = 4,
-  horizontalPadding = 8,
-  textColor = 'inherit',
-  fontWeight = 'inherit',
-  containerStyle,
-  counterStyle,
-  digitStyle,
-  gradientHeight = 16,
-  gradientFrom = 'black',
-  gradientTo = 'transparent',
-  topGradientStyle,
-  bottomGradientStyle
-}) {
-  const height = fontSize + padding;
-  const defaultCounterStyle = {
-    fontSize,
-    gap: gap,
-    borderRadius: borderRadius,
-    paddingLeft: horizontalPadding,
-    paddingRight: horizontalPadding,
-    color: textColor,
-    fontWeight: fontWeight,
-    direction: "ltr"
-  };
-  const defaultTopGradientStyle = {
-    height: gradientHeight,
-    background: \`linear-gradient(to bottom, \${gradientFrom}, \${gradientTo})\`
-  };
-  const defaultBottomGradientStyle = {
-    height: gradientHeight,
-    background: \`linear-gradient(to top, \${gradientFrom}, \${gradientTo})\`
-  };
-  return (
-    <span className="counter-container" style={containerStyle}>
-      <span className="counter-counter" style={{ ...defaultCounterStyle, ...counterStyle }}>
-        {places.map(place => (
-          <Digit key={place} place={place} value={value} height={height} digitStyle={digitStyle} />
-        ))}
-      </span>
-      <span className="gradient-container">
-        <span className="top-gradient" style={topGradientStyle ? topGradientStyle : defaultTopGradientStyle}></span>
-        <span
-          className="bottom-gradient"
-          style={bottomGradientStyle ? bottomGradientStyle : defaultBottomGradientStyle}
-        ></span>
-      </span>
-    </span>
-  );
-}
-`.trim(),
-  },
-  {
     id: 'stepper',
     label: 'Stepper',
     component:Stepper,
@@ -4183,31 +4019,45 @@ map по шагам → кружки + подписи.
 Линия (через псевдоэлемент или отдельный div).
 
 Логика переключения шагов (кнопки «Назад» / «Вперёд» или внешнее управление).`,
-  children: (
-<Stepper
-  initialStep={1}
-  onStepChange={(step) => {
-    console.log(step);
-  }}
-  onFinalStepCompleted={() => console.log("All steps completed!")}
-  backButtonText="Previous"
-  nextButtonText="Next"
->
-  <Step>
-    <h2>Welcome to the React Bits stepper!</h2>
-    <p>Check out the next step!</p>
-  </Step>
-  <Step>
-    <h2>Step 2</h2>
-    <img style={{ height: '100px', width: '100%', objectFit: 'cover', objectPosition: 'center -70px', borderRadius: '15px', marginTop: '1em' }} src="https://www.purrfectcatgifts.co.uk/cdn/shop/collections/Funny_Cat_Cards_640x640.png?v=1663150894" />
-    <p>Custom step content!</p>
-  </Step>
-  <Step>
-    <h2>Final Step</h2>
-    <p>You made it!</p>
-  </Step>
-</Stepper>
-  ),
+props: {
+    initialStep: 1,
+    onStepChange: step => {
+      console.log(step);
+    },
+    onFinalStepCompleted: () => {
+      console.log('All steps completed!');
+    },
+    backButtonText: 'Previous',
+    nextButtonText: 'Next'
+  },
+
+  children: [
+    <Step key="step-1">
+      <h2>Welcome to the React Bits stepper!</h2>
+      <p>Check out the next step!</p>
+    </Step>,
+    <Step key="step-2">
+      <h2>Step 2</h2>
+      <img
+        src="https://www.purrfectcatgifts.co.uk/cdn/shop/collections/Funny_Cat_Cards_640x640.png?v=1663150894"
+        alt="Funny cat"
+        style={{
+          height: '100px',
+          width: '100%',
+          objectFit: 'cover',
+          objectPosition: 'center -70px',
+          borderRadius: '15px',
+          marginTop: '1em'
+        }}
+      />
+      <p>Custom step content!</p>
+    </Step>,
+    <Step key="step-3">
+      <h2>Final Step</h2>
+      <p>You made it!</p>
+    </Step>
+
+  ],
     code: `import React, { useState, Children, useRef, useLayoutEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 
@@ -4462,5 +4312,426 @@ function CheckIcon(props) {
   );
 }
 `,
+  },
+  {
+  id:'pill-nav',
+  label:'Pill Nav',
+  component:PillNav,
+  desc:`Что это:
+
+Навигационное меню в форме закруглённой «капсулы».
+
+При наведении или выборе раздела цветной фон плавно перемещается
+между пунктами навигации. Это делает активную страницу заметной
+и добавляет интерфейсу мягкую анимацию.
+
+Как работает:
+
+Компонент получает массив пунктов навигации.
+
+Каждый пункт содержит текст и ссылку.
+
+PillNav отслеживает активный пункт и через анимацию перемещает
+подсветку-«капсулу» к нужной ссылке.
+
+Что внутри:
+
+<nav> — семантический контейнер навигации.
+
+Логотип или текст бренда.
+
+Массив items, который отображается через map().
+
+<a> / Link для переходов.
+
+Анимированный декоративный элемент для активного пункта.`,
+props:{
+    logo: '/github.svg',
+    logoAlt: 'My portfolio logo',
+
+    items: [
+      {
+        label: 'Home',
+        href: '#home',
+        ariaLabel: 'Go to home section'
+      },
+      {
+        label: 'Components',
+        href: '#components',
+        ariaLabel: 'Go to components section'
+      },
+      {
+        label: 'About',
+        href: '#about',
+        ariaLabel: 'Go to about section'
+      },
+      {
+        label: 'Contact',
+        href: '#contact',
+        ariaLabel: 'Go to contact section'
+      }
+    ],
+
+    activeHref: '#home',
+
+    baseColor: '#0d0d12',
+    pillColor: '#ffffff',
+    hoveredPillTextColor: '#ffffff',
+
+    initialLoadAnimation: true,
+    ease: 'power3.out'
+  },
+  code:`import { useEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { gsap } from 'gsap';
+import './PillNav.css';
+
+const PillNav = ({
+  logo,
+  logoAlt = 'Logo',
+  items,
+  activeHref,
+  className = '',
+  ease = 'power3.easeOut',
+  baseColor = '#fff',
+  pillColor = '#120F17',
+  hoveredPillTextColor = '#120F17',
+  pillTextColor,
+  onMobileMenuClick,
+  initialLoadAnimation = true
+}) => {
+  const resolvedPillTextColor = pillTextColor ?? baseColor;
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const circleRefs = useRef([]);
+  const tlRefs = useRef([]);
+  const activeTweenRefs = useRef([]);
+  const logoImgRef = useRef(null);
+  const logoTweenRef = useRef(null);
+  const hamburgerRef = useRef(null);
+  const mobileMenuRef = useRef(null);
+  const navItemsRef = useRef(null);
+  const logoRef = useRef(null);
+
+  useEffect(() => {
+    const layout = () => {
+      circleRefs.current.forEach(circle => {
+        if (!circle?.parentElement) return;
+
+        const pill = circle.parentElement;
+        const rect = pill.getBoundingClientRect();
+        const { width: w, height: h } = rect;
+        const R = ((w * w) / 4 + h * h) / (2 * h);
+        const D = Math.ceil(2 * R) + 2;
+        const delta = Math.ceil(R - Math.sqrt(Math.max(0, R * R - (w * w) / 4))) + 1;
+        const originY = D - delta;
+
+        circle.style.width = \`\${D}px\`;
+        circle.style.height = \`\${D}px\`;
+        circle.style.bottom = \`-\${delta}px\`;
+
+        gsap.set(circle, {
+          xPercent: -50,
+          scale: 0,
+          transformOrigin: \`50% \${originY}px\`
+        });
+
+        const label = pill.querySelector('.pill-label');
+        const white = pill.querySelector('.pill-label-hover');
+
+        if (label) gsap.set(label, { y: 0 });
+        if (white) gsap.set(white, { y: h + 12, opacity: 0 });
+
+        const index = circleRefs.current.indexOf(circle);
+        if (index === -1) return;
+
+        tlRefs.current[index]?.kill();
+        const tl = gsap.timeline({ paused: true });
+
+        tl.to(circle, { scale: 1.2, xPercent: -50, duration: 2, ease, overwrite: 'auto' }, 0);
+
+        if (label) {
+          tl.to(label, { y: -(h + 8), duration: 2, ease, overwrite: 'auto' }, 0);
+        }
+
+        if (white) {
+          gsap.set(white, { y: Math.ceil(h + 100), opacity: 0 });
+          tl.to(white, { y: 0, opacity: 1, duration: 2, ease, overwrite: 'auto' }, 0);
+        }
+
+        tlRefs.current[index] = tl;
+      });
+    };
+
+    layout();
+
+    const onResize = () => layout();
+    window.addEventListener('resize', onResize);
+
+    if (document.fonts?.ready) {
+      document.fonts.ready.then(layout).catch(() => {});
+    }
+
+    const menu = mobileMenuRef.current;
+    if (menu) {
+      gsap.set(menu, { visibility: 'hidden', opacity: 0, scaleY: 1 });
+    }
+
+    if (initialLoadAnimation) {
+      const logo = logoRef.current;
+      const navItems = navItemsRef.current;
+
+      if (logo) {
+        gsap.set(logo, { scale: 0 });
+        gsap.to(logo, {
+          scale: 1,
+          duration: 0.6,
+          ease
+        });
+      }
+
+      if (navItems) {
+        gsap.set(navItems, { width: 0, overflow: 'hidden' });
+        gsap.to(navItems, {
+          width: 'auto',
+          duration: 0.6,
+          ease
+        });
+      }
+    }
+
+    return () => window.removeEventListener('resize', onResize);
+  }, [items, ease, initialLoadAnimation]);
+
+  const handleEnter = i => {
+    const tl = tlRefs.current[i];
+    if (!tl) return;
+    activeTweenRefs.current[i]?.kill();
+    activeTweenRefs.current[i] = tl.tweenTo(tl.duration(), {
+      duration: 0.3,
+      ease,
+      overwrite: 'auto'
+    });
+  };
+
+  const handleLeave = i => {
+    const tl = tlRefs.current[i];
+    if (!tl) return;
+    activeTweenRefs.current[i]?.kill();
+    activeTweenRefs.current[i] = tl.tweenTo(0, {
+      duration: 0.2,
+      ease,
+      overwrite: 'auto'
+    });
+  };
+
+  const handleLogoEnter = () => {
+    const img = logoImgRef.current;
+    if (!img) return;
+    logoTweenRef.current?.kill();
+    gsap.set(img, { rotate: 0 });
+    logoTweenRef.current = gsap.to(img, {
+      rotate: 360,
+      duration: 0.2,
+      ease,
+      overwrite: 'auto'
+    });
+  };
+
+  const toggleMobileMenu = () => {
+    const newState = !isMobileMenuOpen;
+    setIsMobileMenuOpen(newState);
+
+    const hamburger = hamburgerRef.current;
+    const menu = mobileMenuRef.current;
+
+    if (hamburger) {
+      const lines = hamburger.querySelectorAll('.hamburger-line');
+      if (newState) {
+        gsap.to(lines[0], { rotation: 45, y: 3, duration: 0.3, ease });
+        gsap.to(lines[1], { rotation: -45, y: -3, duration: 0.3, ease });
+      } else {
+        gsap.to(lines[0], { rotation: 0, y: 0, duration: 0.3, ease });
+        gsap.to(lines[1], { rotation: 0, y: 0, duration: 0.3, ease });
+      }
+    }
+
+    if (menu) {
+      if (newState) {
+        gsap.set(menu, { visibility: 'visible' });
+        gsap.fromTo(
+          menu,
+          { opacity: 0, y: 10, scaleY: 1 },
+          {
+            opacity: 1,
+            y: 0,
+            scaleY: 1,
+            duration: 0.3,
+            ease,
+            transformOrigin: 'top center'
+          }
+        );
+      } else {
+        gsap.to(menu, {
+          opacity: 0,
+          y: 10,
+          scaleY: 1,
+          duration: 0.2,
+          ease,
+          transformOrigin: 'top center',
+          onComplete: () => {
+            gsap.set(menu, { visibility: 'hidden' });
+          }
+        });
+      }
+    }
+
+    onMobileMenuClick?.();
+  };
+
+  const isExternalLink = href =>
+    href.startsWith('http://') ||
+    href.startsWith('https://') ||
+    href.startsWith('//') ||
+    href.startsWith('mailto:') ||
+    href.startsWith('tel:') ||
+    href.startsWith('#');
+
+  const isRouterLink = href => href && !isExternalLink(href);
+
+  const cssVars = {
+    ['--base']: baseColor,
+    ['--pill-bg']: pillColor,
+    ['--hover-text']: hoveredPillTextColor,
+    ['--pill-text']: resolvedPillTextColor
+  };
+
+  return (
+    <div className="pill-nav-container">
+      <nav className={\`pill-nav \${className}\`} aria-label="Primary" style={cssVars}>
+        {isRouterLink(items?.[0]?.href) ? (
+          <Link
+            className="pill-logo"
+            to={items[0].href}
+            aria-label="Home"
+            onMouseEnter={handleLogoEnter}
+            role="menuitem"
+            ref={el => {
+              logoRef.current = el;
+            }}
+          >
+            <img src={logo} alt={logoAlt} ref={logoImgRef} />
+          </Link>
+        ) : (
+          <a
+            className="pill-logo"
+            href={items?.[0]?.href || '#'}
+            aria-label="Home"
+            onMouseEnter={handleLogoEnter}
+            ref={el => {
+              logoRef.current = el;
+            }}
+          >
+            <img src={logo} alt={logoAlt} ref={logoImgRef} />
+          </a>
+        )}
+
+        <div className="pill-nav-items desktop-only" ref={navItemsRef}>
+          <ul className="pill-list" role="menubar">
+            {items.map((item, i) => (
+              <li key={item.href || \`item-\${i}\`} role="none">
+                {isRouterLink(item.href) ? (
+                  <Link
+                    role="menuitem"
+                    to={item.href}
+                    className={\`pill\${activeHref === item.href ? ' is-active' : ''}\`}
+                    aria-label={item.ariaLabel || item.label}
+                    onMouseEnter={() => handleEnter(i)}
+                    onMouseLeave={() => handleLeave(i)}
+                  >
+                    <span
+                      className="hover-circle"
+                      aria-hidden="true"
+                      ref={el => {
+                        circleRefs.current[i] = el;
+                      }}
+                    />
+                    <span className="label-stack">
+                      <span className="pill-label">{item.label}</span>
+                      <span className="pill-label-hover" aria-hidden="true">
+                        {item.label}
+                      </span>
+                    </span>
+                  </Link>
+                ) : (
+                  <a
+                    role="menuitem"
+                    href={item.href}
+                    className={\`pill\${activeHref === item.href ? ' is-active' : ''}\`}
+                    aria-label={item.ariaLabel || item.label}
+                    onMouseEnter={() => handleEnter(i)}
+                    onMouseLeave={() => handleLeave(i)}
+                  >
+                    <span
+                      className="hover-circle"
+                      aria-hidden="true"
+                      ref={el => {
+                        circleRefs.current[i] = el;
+                      }}
+                    />
+                    <span className="label-stack">
+                      <span className="pill-label">{item.label}</span>
+                      <span className="pill-label-hover" aria-hidden="true">
+                        {item.label}
+                      </span>
+                    </span>
+                  </a>
+                )}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <button
+          className="mobile-menu-button mobile-only"
+          onClick={toggleMobileMenu}
+          aria-label="Toggle menu"
+          ref={hamburgerRef}
+        >
+          <span className="hamburger-line" />
+          <span className="hamburger-line" />
+        </button>
+      </nav>
+
+      <div className="mobile-menu-popover mobile-only" ref={mobileMenuRef} style={cssVars}>
+        <ul className="mobile-menu-list">
+          {items.map((item, i) => (
+            <li key={item.href || \`mobile-item-\${i}\`}>
+              {isRouterLink(item.href) ? (
+                <Link
+                  to={item.href}
+                  className={\`mobile-menu-link\${activeHref === item.href ? ' is-active' : ''}\`}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  {item.label}
+                </Link>
+              ) : (
+                <a
+                  href={item.href}
+                  className={\`mobile-menu-link\${activeHref === item.href ? ' is-active' : ''}\`}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  {item.label}
+                </a>
+              )}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  );
+};
+
+export default PillNav;
+`
   },
 ];

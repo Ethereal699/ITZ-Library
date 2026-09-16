@@ -14,7 +14,7 @@ export default function Module_page(){
      <div className={styles.mod_page}>
         <Element  selectedElement={selectedElement}/>
         <Prev selectedElement={selectedElement}/>
-        <Element_list onSelectElement={setSelectedElement}/>
+        <Element_list onSelectElement={setSelectedElement || selectedElement}/>
         <Code selectedElement={selectedElement} />
         <Code_exp selectedElement={selectedElement}/>
      </div>

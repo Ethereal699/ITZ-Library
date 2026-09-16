@@ -9,7 +9,8 @@ const GooeyNav = ({
   particleR = 100,
   timeVariance = 300,
   colors = [1, 2, 3, 1, 2, 3, 1, 4],
-  initialActiveIndex = 0
+  initialActiveIndex = 0,
+  className=''
 }) => {
   const containerRef = useRef(null);
   const navRef = useRef(null);
@@ -147,7 +148,9 @@ const GooeyNav = ({
   }, [activeIndex]);
 
   return (
-    <div className="gooey-nav-container" ref={containerRef}>
+    <div className={`gooey-nav-container ${className}`}
+    ref={containerRef}
+    >
       <nav>
         <ul ref={navRef}>
           {items.map((item, index) => (

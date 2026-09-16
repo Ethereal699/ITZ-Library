@@ -1,7 +1,7 @@
 .code_exp{
     width: 700px;
     height: 625px;
-    background: #c27406;
+    background: #946000;
     border-radius: 15px;
     display: flex;
     align-items: center;
@@ -10,9 +10,10 @@
     flex-direction: column;
     position: absolute;
     right: 10;
-    bottom: -600;
+    bottom: -450;
     color: black;
     padding: 5px;
+    overflow: hidden;
     font-size: 18px;
 }
 .code_exp2{
@@ -21,7 +22,7 @@
     min-width: 0;
     min-height: 0;
     box-sizing: border-box;
-    background: #ff9500;
+    background: #ffa600;
     border-radius: 15px;
     padding: 5px;
     border: 2px solid black;
@@ -31,13 +32,12 @@
 .code_exp_prev2{
     width: 690px;
     height: 615px;
-    background: #ff9500;
+    background: #ffa600;
     border-radius: 15px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    padding: 5px;
     border: 2px solid black;
 }
 .desc-block {
@@ -61,10 +61,8 @@ height: 10px;
 background: none;
 }
 .code_exp2::-webkit-scrollbar-thumb{
-border: 2px solid #ff9500;
 background-clip: padding-box;
 border-radius: 15px;
-background: orange;
 }
 .code_exp2::-webkit-scrollbar-track{
 margin: 12px 6px 12px 0; 

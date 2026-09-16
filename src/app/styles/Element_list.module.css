@@ -1,13 +1,13 @@
 .el_list{
 width: 300px;
 height: 730px;   
-background: #c27406;
+background: #946000;
 border-radius: 15px;
 display: flex;
 justify-content: center;
 align-items: center;
 flex-direction: column;
-color: rgb(0, 0, 0);
+color: black;
 position: absolute;
 left: 20;
 bottom: 170;
@@ -30,7 +30,7 @@ justify-content: center;
 flex-direction: column;
 border:2px solid black;   
 border-radius: 15px;
-background: #ff9500;
+background: #ffa600;
 }
 @keyframes clicked{
 100%{

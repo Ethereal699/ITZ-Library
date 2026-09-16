@@ -18,7 +18,7 @@ const SpotlightCard = ({ children, className = '', spotlightColor = 'rgba(255, 2
 
   return (
     <div ref={divRef} onMouseMove={handleMouseMove} className={`card-spotlight ${className}`}>
-      {children}
+      hover me
     </div>
   );
 };

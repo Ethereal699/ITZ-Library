@@ -7,7 +7,7 @@ return (
 <Logo />
 </div>
 <div className={styles.right}>
-<a href="https://github.com/inject-developer/ITZ-Library"><img src="/github.svg" alt="github" className={styles.icon} /></a>
+<a href="https://github.com/Ethereal699/ITZ-Library/tree/my-updates"><img src="/github.svg" alt="github" className={styles.icon} /></a>
 </div>
 </header>
 );

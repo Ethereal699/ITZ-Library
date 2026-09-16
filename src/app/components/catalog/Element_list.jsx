@@ -1,8 +1,8 @@
 'use client';
 import styles from '../../styles/Element_list.module.css';
 import { dataBase } from '../../data/data';
-
-export default function Element_list({ onSelectElement }) {
+import { useState } from 'react';
+export default function Element_list({ onSelectElement , selectedElement }) {
   const elements = [
     'Specular Button',
     'Curved Input',
@@ -20,14 +20,13 @@ export default function Element_list({ onSelectElement }) {
     'Border Glow',
     'Glass Icons',
     'Elastic Slider',
-    'Counter',
+    'Pill Nav',
     'Stepper',
   ];
 
   return (
       <div className={styles.el_list}>
         <div className={styles.el_list2}>
-          
            <ul>
           {elements.map((label) => {
             const item = dataBase.find((btn) => btn.label === label) || {
@@ -36,6 +35,8 @@ export default function Element_list({ onSelectElement }) {
             };
 
             return (
+           
+          
               <li
                 key={item.id}
                 onClick={() => onSelectElement(item)}
@@ -44,6 +45,8 @@ export default function Element_list({ onSelectElement }) {
               >
                 {label}
               </li>
+              
+
             );
           })}
         </ul>

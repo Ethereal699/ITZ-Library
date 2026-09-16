@@ -1,11 +1,12 @@
 .selected_element_prev{
    width: 1300px;
    height: 550px;
-   background: #c27406;
+   background: #946000;
    border-radius: 15px;
    display: flex;
    font-size: 16px;
    position: absolute;
+   top: 60;
    left: 450;
    font-family: monospace;
    align-items: center;
@@ -16,7 +17,7 @@
 .selected_element_prev2{
 width: 1290px;
 height: 540px;
-background: #414141;
+background: #333333;
 border-radius: 15px;
 display: flex;
 font-family: monospace;
@@ -24,4 +25,6 @@ border: 2px solid black;
 display: flex;
 align-items: center;
 justify-content: center;
+overflow: visible;
+position: relative;
 }
