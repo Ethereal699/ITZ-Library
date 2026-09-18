@@ -1,11 +1,66 @@
-.mod_page_container {
+/* В проекте нет глобального box-sizing, а здесь ширина 100% сочетается с padding'ами */
+.catalog_page,
+.catalog_main,
+.module_page,
+.sidebar,
+.mod_page_container,
+.mod_page {
+    box-sizing: border-box;
+}
+
+
+.catalog_page {
+    --sidebar-w: 280px;
     width: 100%;
-    max-width: 1600px;
-    margin: 0 auto;
+}
+
+.catalog_main {
+    width: 100%;
+    display: block;
+    padding: 0;
+}
+
+
+.module_page {
+    display: flex;
+    align-items: stretch;
+    gap: 32px;
+    width: 100%;
+    padding: 24px;
+}
+
+
+.sidebar {
+    position: sticky;
+    top: 24px;
+    flex-shrink: 0;
+    align-self: stretch;
+    width: var(--sidebar-w);
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    max-height: calc(100vh - 48px);
+    max-height: calc(100dvh - 48px);
+    z-index: 20;
+}
+
+.sidebar > div {
+    flex: 1 1 0;
+    min-height: 0;
+    height: auto;
+    overflow-y: auto;
+}
+
+.mod_page_container {
+    flex: 1;
+    min-width: 0;
+    width: 100%;
+    max-width: none;
+    margin: 0;
     display: flex;
     flex-direction: column;
     gap: 20px;
-    padding: 24px;
+    padding: 0;
     opacity: 0;
     animation: fadeInUp 0.6s ease-out forwards;
     backface-visibility: hidden;
@@ -16,14 +71,14 @@
     width: 100%;
     height: calc(100vh - 280px);
     display: grid;
-    grid-template-columns: 280px 400px 400px;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     grid-template-rows: 1fr;
     grid-template-areas:
-        "list code code_exp";
+        "code code_exp";
     gap: 20px;
-    padding: 24px;
-    max-width: 1600px;
-    margin: 0 auto;
+    padding: 0;
+    max-width: none;
+    margin: 0;
     overflow: hidden;
     opacity: 0;
     animation: fadeInUp 0.6s ease-out forwards;
@@ -43,28 +98,58 @@
     }
 }
 
-/* Адаптивность для планшетов */
 @media (max-width: 1200px) {
-    .mod_page_container {
+    .catalog_page {
+        --sidebar-w: 240px;
+    }
+
+    .module_page {
         padding: 20px;
+        gap: 24px;
+    }
+
+    .mod_page_container {
         gap: 16px;
         height: calc(100vh - 200px);
     }
+
+    .sidebar {
+        max-height: calc(100vh - 40px);
+        max-height: calc(100dvh - 40px);
+    }
     
     .mod_page {
-        grid-template-columns: 240px 1fr;
+        grid-template-columns: minmax(0, 1fr);
         grid-template-rows: 1fr 1fr;
         grid-template-areas:
-            "list code"
-            "list code_exp";
+            "code"
+            "code_exp";
         height: calc(100vh - 260px);
     }
 }
 
-/* Адаптивность для мобильных */
+
 @media (max-width: 768px) {
-    .mod_page_container {
+    .module_page {
+        flex-direction: column;
         padding: 16px;
+        gap: 12px;
+    }
+
+    .sidebar {
+        position: static;
+        width: 100%;
+        height: auto;
+        max-height: none;
+    }
+
+
+    .sidebar > div {
+        flex: 0 0 auto;
+        max-height: 320px;
+    }
+
+    .mod_page_container {
         gap: 12px;
         height: auto;
         overflow: visible;
@@ -74,10 +159,9 @@
         grid-template-columns: 1fr;
         grid-template-rows: auto;
         grid-template-areas:
-            "list"
             "code"
             "code_exp";
-        padding: 16px;
+        padding: 0;
         gap: 16px;
         height: auto;
         min-height: 500px;

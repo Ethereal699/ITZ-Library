@@ -52,18 +52,18 @@ a {
   text-decoration: none;
 }
 
-/* Селекция текста */
+
 ::selection {
   background: rgba(255, 149, 0, 0.3);
   color: var(--white);
 }
 
-/* Hide cursor on all elements */
+
 a, button, input, textarea, select, [role="button"], [data-cursor="pointer"], * {
   cursor: none !important;
 }
 
-/* Hide cursor on interactive states */
+
 a:hover, a:active, a:focus,
 button:hover, button:active, button:focus, button:focus-visible,
 input:hover, input:active, input:focus,
@@ -73,13 +73,13 @@ select:hover, select:active, select:focus,
   cursor: none !important;
 }
 
-/* Focus visible outline */
+
 a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible {
   outline: 2px solid #ff9500;
   outline-offset: 2px;
 }
 
-/* Restore cursor on mobile */
+
 @media (max-width: 768px) {
   html, body, #__next, *,
   a, button, input, textarea, select, [role="button"], [data-cursor="pointer"] {

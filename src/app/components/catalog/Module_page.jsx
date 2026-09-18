@@ -11,15 +11,17 @@ export default function Module_page(){
    const [selectedElement, setSelectedElement] = useState(null);
    const { t } = useLanguage();
    return(
-    <div>
-      <div className={styles.mod_page_container}>
-        <Element selectedElement={selectedElement}/>
-        <div className={styles.mod_page} style={{ animationDelay: '0.1s' }}>
-           <Element_list onSelectElement={setSelectedElement} selectedElement={selectedElement}/>
-           <Code selectedElement={selectedElement} />
-           <Code_exp selectedElement={selectedElement}/>
-        </div>
-      </div>
-    </div>
+     <div className={styles.module_page}>
+       <aside className={styles.sidebar}>
+         <Element_list onSelectElement={setSelectedElement} selectedElement={selectedElement}/>
+       </aside>
+       <div className={styles.mod_page_container}>
+         <Element selectedElement={selectedElement}/>
+         <div className={styles.mod_page} style={{ animationDelay: '0.1s' }}>
+            <Code selectedElement={selectedElement} />
+            <Code_exp selectedElement={selectedElement}/>
+         </div>
+       </div>
+     </div>
    ) 
  }

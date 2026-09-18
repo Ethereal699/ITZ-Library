@@ -9,7 +9,7 @@ export default function Code_exp({ selectedElement }){
     return(
         <div className={styles.code_exp}>
             <div className={styles.code_exp_header} />
-            <div className={styles.code_exp_content}>
+            <div className={`${styles.code_exp_content} ${styles.empty}`}>
                 <h3>{t('The code explanation will be there')}</h3>
             </div>
         </div>

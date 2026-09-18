@@ -1,0 +1,185 @@
+/* Сцена превью компонента: общая оболочка + точечные подгонки под конкретные демо */
+
+.demo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 24px;
+    width: 100%;
+    min-height: 100%;
+    padding: 24px;
+}
+
+.demo *,
+.demo *::before,
+.demo *::after {
+    box-sizing: border-box;
+}
+
+.card {
+    width: min(420px, 100%);
+    min-height: 220px;
+    padding: 24px;
+}
+
+.cardContent {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.cardTitle {
+    margin: 0;
+    font-size: 1.3rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+}
+
+.cardText {
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.accent {
+    color: var(--orange);
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.note {
+    width: 100%;
+    max-width: 46ch;
+    margin: 0;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.65);
+}
+
+
+.dockStage {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    width: 100%;
+    height: 200px;
+}
+
+
+.narrow {
+    width: min(480px, 100%);
+}
+
+.stepperStage {
+    width: min(560px, 100%);
+}
+
+.stepperStage :global(.outer-container) {
+    min-height: 0;
+    aspect-ratio: auto;
+}
+
+.profileStage :global(.pc-card) {
+    height: 100%;
+    max-height: 420px;
+}
+
+
+@media (max-width: 480px) {
+    .profileStage :global(.pc-card) {
+        max-height: 340px;
+    }
+}
+
+
+.cursorStage {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    min-height: 220px;
+    border: 1px dashed rgba(255, 149, 0, 0.35);
+    border-radius: 16px;
+}
+
+.cursorDot,
+.cursorRing {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.cursorDot {
+    width: 8px;
+    height: 8px;
+    background: var(--orange);
+    transform: translate(-50%, -50%);
+}
+
+.cursorRing {
+    width: 36px;
+    height: 36px;
+    border: 1.5px solid rgba(255, 149, 0, 0.7);
+    transform: translate(-50%, -50%);
+    animation: ringPulse 2.4s ease-in-out infinite;
+}
+
+@keyframes ringPulse {
+
+    0%,
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    50% {
+        transform: translate(-50%, -50%) scale(1.4);
+    }
+}
+
+.cursorTarget {
+    padding: 10px 18px;
+    border: 1px solid rgba(255, 149, 0, 0.4);
+    border-radius: 999px;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.85);
+    background: rgba(255, 149, 0, 0.08);
+}
+
+
+.miniButton {
+    padding: 8px 14px;
+    border: 1px solid rgba(255, 149, 0, 0.4);
+    border-radius: 10px;
+    background: rgba(255, 149, 0, 0.1);
+    color: var(--white);
+    font-size: 0.9rem;
+    font-family: inherit;
+    transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.miniButton:hover {
+    background: rgba(255, 149, 0, 0.2);
+    border-color: rgba(255, 149, 0, 0.7);
+}

@@ -49,12 +49,26 @@
 
 .code_sec_content {
     flex: 1;
-    overflow-y: auto;
+    overflow: hidden auto;
     min-height: 0;
 }
 
 .code_sec_content > * {
+    box-sizing: border-box;
     padding: 72px 24px 24px;
+}
+
+.code_sec_content.empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.code_sec_content.empty > * {
+    padding: 72px 24px 24px;
+    margin: 0;
+    text-align: center;
+    width: 100%;
 }
 
 .code_sec_content::-webkit-scrollbar {
@@ -81,8 +95,10 @@
     color: rgba(255, 255, 255, 0.85);
     background: transparent;
     width: 100%;
+    max-width: 100%;
     white-space: pre-wrap;
     word-wrap: break-word;
+    overflow-wrap: anywhere;
     tab-size: 2;
     -moz-tab-size: 2;
     margin: 0;

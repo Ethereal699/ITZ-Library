@@ -11,6 +11,19 @@ const eslintConfig = defineConfig([
     "build/**",
     "next-env.d.ts",
   ]),
+  {
+    // Компоненты, скачанные с reactbits.dev (vendor-код): их исходники не правятся
+    // под строгие правила React Compiler, иначе приходится переписывать чужой код.
+    files: ["src/app/components/reactbits/**"],
+    rules: {
+      "react-hooks/purity": "off",
+      "react-hooks/refs": "off",
+      "react-hooks/immutability": "off",
+      "react-hooks/set-state-in-effect": "off",
+      "@next/next/no-img-element": "off",
+      "jsx-a11y/alt-text": "off",
+    },
+  },
 ]);
 
 export default eslintConfig;

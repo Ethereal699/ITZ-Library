@@ -17,37 +17,85 @@
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
 
 @keyframes fadeIn {
     from {
         opacity: 0;
-        transform: translateY(10px);
     }
     to {
         opacity: 1;
-        transform: translateY(0);
     }
 }
 
-@keyframes fadeIn {
+/* Появление плашки: выезд сверху + проявление */
+@keyframes plateIn {
     from {
         opacity: 0;
-        transform: translateY(10px);
+        transform: translateY(-16px) scale(0.98);
     }
+
     to {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateY(0) scale(1);
     }
+}
+
+.selected_element {
+    animation: plateIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) backwards;
+}
+
+
+.selected_element.with_preview {
+    height: auto;
+    padding: 24px;
+    gap: 16px;
+    align-items: stretch;
+}
+
+.selected_element.with_preview h3 {
+    white-space: normal;
+    overflow: visible;
+}
+
+
+.stage {
+    position: relative;
+    width: 100%;
+    height: min(620px, calc(100vh - 420px));
+    min-height: 420px;
+    overflow: auto;
+    overscroll-behavior: auto;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 149, 0, 0.15);
+    background: rgba(0, 0, 0, 0.25);
+    isolation: isolate;
+    transform: translateZ(0);
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 149, 0, 0.4) transparent;
+    scrollbar-gutter: stable;
+}
+
+.stage_inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100%;
+    transform-style: flat;
+    animation: fadeIn 0.35s ease-out;
+}
+
+.stage::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+.stage::-webkit-scrollbar-thumb {
+    background: rgba(255, 149, 0, 0.35);
+    border-radius: 4px;
+}
+
+.stage::-webkit-scrollbar-track {
+    background: transparent;
 }
 
 .selected_element:hover {
@@ -105,6 +153,11 @@
     .selected_element {
         padding: 24px 20px;
         min-height: 100px;
+    }
+
+    .selected_element.with_preview .stage {
+        height: 460px;
+        min-height: 320px;
     }
     
     .selected_element h3 {

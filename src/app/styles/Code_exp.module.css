@@ -49,12 +49,26 @@
 
 .code_exp_content {
     flex: 1;
-    overflow-y: auto;
+    overflow: hidden auto;
     min-height: 0;
 }
 
 .code_exp_content > * {
+    box-sizing: border-box;
     padding: 72px 24px 24px;
+}
+
+.code_exp_content.empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.code_exp_content.empty > * {
+    padding: 72px 24px 24px;
+    margin: 0;
+    text-align: center;
+    width: 100%;
 }
 
 .code_exp_content::-webkit-scrollbar {

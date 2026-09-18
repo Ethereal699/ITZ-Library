@@ -12,9 +12,7 @@ export default function Element_list({ onSelectElement, selectedElement }) {
     'Line Sidebar',
     'Animated List',
     'Tilted Card',
-    'Reflective Card',
     'Folder',
-    'Profile Card',
     'Dock',
     'Gooey Nav',
     'Pixel Card',
@@ -24,7 +22,6 @@ export default function Element_list({ onSelectElement, selectedElement }) {
     'Glass Icons',
     'Elastic Slider',
     'Counter',
-    'Cursor Follower',
     'Stepper',
   ];
 

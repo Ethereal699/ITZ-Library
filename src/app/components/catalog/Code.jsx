@@ -9,7 +9,7 @@ export default function Code_section({ selectedElement }) {
     return (
       <div className={styles.code_sec}>
         <div className={styles.code_sec_header} />
-        <div className={styles.code_sec_content}>
+        <div className={`${styles.code_sec_content} ${styles.empty}`}>
           <h3>{t('To get started select element')}</h3>
         </div>
       </div>

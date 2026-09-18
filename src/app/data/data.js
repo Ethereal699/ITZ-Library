@@ -126,44 +126,38 @@ box-shadow для свечения,
 
 transition для плавных hover/focus‑эффектов.`,
     props: {
-      size: 'md',
-      radius: 12,
-      tint: '#e0e0ff',
-      tintOpacity: 0.1,
-      blur: 4,
-      textColor: '#ffffff',
-      lineColor: '#a0a0ff',
-      baseColor: '#3a3a5a',
-      intensity: 1.2,
-      shineSize: 12,
-      shineFade: 50,
-      thickness: 1.2,
-      speed: 0.3,
-      followMouse: true,
-      proximity: 200,
-      autoAnimate: false,
+      theme: 'dark',
+      width: 450,
+      bend: 28,
+      height: 64,
+      cornerRadius: 18,
+      borderWidth: 1.5,
+      fontSize: 16,
+      type: 'email',
+      placeholder: 'you@example.com',
+      buttonText: 'Get Started',
+      showButton: true,
+      showIcon: true,
+      shadowSize: 'md',
     },
     code: `
-<SpecularButton
-  size="md"
-  radius={12}
-  tint="#e0e0ff"
-  tintOpacity={0.1}
-  blur={4}
-  textColor="#ffffff"
-  lineColor="#a0a0ff"
-  baseColor="#3a3a5a"
-  intensity={1.2}
-  shineSize={12}
-  shineFade={50}
-  thickness={1.2}
-  speed={0.3}
-  followMouse={true}
-  proximity={200}
-  autoAnimate={false}
->
-  Curved Input
-</SpecularButton>
+import CurvedInput from './CurvedInput';
+
+<CurvedInput
+  theme="dark"
+  width={450}
+  bend={28}
+  height={64}
+  cornerRadius={18}
+  borderWidth={1.5}
+  fontSize={16}
+  type="email"
+  placeholder="you@example.com"
+  buttonText="Get Started"
+  showButton
+  showIcon
+  onSubmit={(value) => console.log('Submitted:', value)}
+/>
     `.trim(),
   },
   {
@@ -379,13 +373,18 @@ const items = ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5',
 «Крышка» (cover) — передний план.
 
 «Внутренность» — контент, который становится виден при «открытии».`,
-    code: `import Folder from './Folder'
+    code: `import Folder from './Folder';
 
-<div style={{ height: '600px', position: 'relative' }}>
-  <Folder size={2} color="#5227FF" className="custom-folder"
-  color="#5227FF"
-  size={2}
-/>
+<div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '400px' }}>
+  <Folder
+    size={2}
+    color="#5227FF"
+    items={[
+      <p key="1">File 1</p>,
+      <p key="2">File 2</p>,
+      <p key="3">File 3</p>
+    ]}
+  />
 </div>`.trim(),
   },
   {
@@ -790,9 +789,11 @@ requestAnimationFrame или setInterval для пошагового измен�
   fontSize={80}
   padding={5}
   gap={10}
+  borderRadius={10}
+  horizontalPadding={15}
   textColor="white"
   fontWeight={900}
-  digitPlaceHolders
+  gradientFrom="#0a0a0f"
 />`.trim(),
   },
   {
@@ -836,23 +837,16 @@ map по шагам → кружки + подписи.
   nextButtonText="Next"
 >
   <Step>
-    <h2>Welcome to the React Bits stepper!</h2>
+    <h2>Welcome to the ITZ Library stepper!</h2>
     <p>Check out the next step!</p>
   </Step>
   <Step>
     <h2>Step 2</h2>
-    <img style={{ height: '100px', width: '100%', objectFit:
-     'cover', objectPosition: 'center -70px', 
-    borderRadius: '15px', marginTop: '1em' 
-    }} src="https://www.purrfectcatgifts.co.
-     uk/cdn/shop/collections/Funny_Cat_Cards_640x640.png?v=1663150894" />
-    <p>Custom step content!</p>
+    <p>Custom step content — any JSX you want.</p>
   </Step>
   <Step>
-    <h2>How about an input?</h2>
-    <input value={name} onChange={(e) => setName(e.target.value)} placeholder="Your name?"
-  disableStepIndicators={false}
-/>
+    <h2>Step 3</h2>
+    <p>Forms, images, text — anything works here.</p>
   </Step>
   <Step>
     <h2>Final Step</h2>
