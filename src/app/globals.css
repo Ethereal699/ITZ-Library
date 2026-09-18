@@ -36,3 +36,12 @@ a{
         
         text-align: center;
 }
+html,
+body,
+button,
+a,
+input,
+textarea,
+select {
+  cursor: none;
+}

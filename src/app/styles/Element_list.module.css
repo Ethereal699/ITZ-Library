@@ -15,11 +15,12 @@ li{
     transition: all .2s ease;
     font-family: monospace;
     font-size: 1.5rem;
-    cursor: pointer;
+    font-family: f;
+    cursor: none;
 }
 li:hover{
-    transform: scale(1.1);
- color: white;
+transform: scale(1.1);
+color: white;
 }
 }
 .el_list2{

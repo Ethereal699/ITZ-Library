@@ -6,12 +6,14 @@ import Code_exp from "../catalog/Code_exp";
 import { useState } from "react";
 import styles from '../../styles/Mod_page.module.css';
 import Prev from '../catalog/Prev'
+import CustomCursor from "./Cursor";
 
 export default function Module_page(){
    const [selectedElement, setSelectedElement] = useState(null);
    return(
     <div>
      <div className={styles.mod_page}>
+         <CustomCursor />
         <Element  selectedElement={selectedElement}/>
         <Prev selectedElement={selectedElement}/>
         <Element_list onSelectElement={setSelectedElement || selectedElement}/>

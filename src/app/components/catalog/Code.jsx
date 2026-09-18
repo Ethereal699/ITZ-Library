@@ -17,7 +17,7 @@ export default function Code_section({ selectedElement }) {
       <div className={styles.code_sec2}>
         {selectedElement.code ? (
           <pre className={styles.code_block}>
-            <code>{selectedElement.code}</code>
+            <code style={{fontFamily:'f'}}>{selectedElement.code}</code>
           </pre>
         ) : (
           <p>Код для этого элемента пока не добавлен.</p>

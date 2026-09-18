@@ -15,6 +15,7 @@
     padding: 5px;
     overflow: hidden;
     font-size: 18px;
+    font-family: f;
 }
 .code_exp2{
     width: 690px;
@@ -28,6 +29,7 @@
     border: 2px solid black;
     overflow-y:auto;
     overflow-x:auto;
+    font-family: f;
 }
 .code_exp_prev2{
     width: 690px;
@@ -50,7 +52,6 @@
   white-space: pre-wrap;
   overflow-wrap: anywhere;
   word-break: break-word;
-  font-family: monospace;
   font-size: 18px;
   line-height: 1.5;
   overflow: visible;

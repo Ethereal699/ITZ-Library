@@ -40,7 +40,6 @@ export default function Element_list({ onSelectElement , selectedElement }) {
               <li
                 key={item.id}
                 onClick={() => onSelectElement(item)}
-                style={{ cursor: 'pointer' }}
                 
               >
                 {label}

@@ -12,7 +12,7 @@ export default function Code_exp({ selectedElement }){
             {selectedElement.desc ? (
              <pre className={styles.desc_block}>
              
-                <code>{selectedElement.desc}</code>
+                <code style={{fontFamily:'f'}}>{selectedElement.desc}</code>
            
              </pre>   
             ) : (
